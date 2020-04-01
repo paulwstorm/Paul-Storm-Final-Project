@@ -5,6 +5,7 @@ const cors = require("cors");
 const bodyParser = require('body-parser')
 const Post = require("./models/post")
 const Word = require("./models/word")
+const User = require("./models/user")
 const ObjectId = require('mongoose').Types.ObjectId
 const querySring = require('querystring')
 
@@ -35,10 +36,27 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 passport.use('login', new LocalStrategy ((username, password, done) => {
-  const authenticated = username === "John" && password === "Smith";
+
+  const authenticated = username === "username" && password === "password";
 
   if (authenticated) {
-    return done(null, { myUser:'user', myID: 1234 });
+    let user = new user()
+
+    let date = new Date ()
+    let userName = `user${date.getSeconds()}${date.getMilliseconds()}`
+
+    user.userName = userName
+    user.userPassword = "12345"
+
+    
+    userLevel = 1,
+    user.userClozes = []
+    user.userDictionary = [],
+    dateCreated = date
+
+    user.save()
+
+    return done(null, { myUser:nameName, myID: 1234 });
   } else {
     return done(null, false);
   }
@@ -46,7 +64,7 @@ passport.use('login', new LocalStrategy ((username, password, done) => {
 
 app.post('/login', passport.authenticate('login', {
   successRedirect: 'http://localhost:3000/selectLevel',
-  failureRedirect: 'http://localhost:3000/',
+  failureRedirect: 'http://localhost:3000/login',
   session: false
 }));
 
