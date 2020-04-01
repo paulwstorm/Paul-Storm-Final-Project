@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 passport.use('login', new LocalStrategy ((username, password, done) => {
-  const authenticated = username === "username" && password === "password";
+  const authenticated = username === "John" && password === "Smith";
 
   if (authenticated) {
     return done(null, { myUser:'user', myID: 1234 });
@@ -46,7 +46,7 @@ passport.use('login', new LocalStrategy ((username, password, done) => {
 
 app.post('/login', passport.authenticate('login', {
   successRedirect: 'http://localhost:3000/selectLevel',
-  failureRedirect: 'http://localhost:3000/login',
+  failureRedirect: 'http://localhost:3000/',
   session: false
 }));
 
