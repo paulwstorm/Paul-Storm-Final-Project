@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import promise from "redux-promise";
-import Login from "./components/login.js"
+import Posts from "./components/posts.js"
 import SelectLevel from "./components/selectLevel.js"
 import './index.css'
 
@@ -18,7 +18,7 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route exact path="/" component={SelectLevel} />
-          <Route exact path="/selectlevel" component={Login} />
+          <Route exact path="/posts" component={Posts} />
         </Switch>
       </div>
     </BrowserRouter>

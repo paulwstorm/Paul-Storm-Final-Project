@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 const Post = require("./models/post")
 const Word = require("./models/word")
 const User = require("./models/user")
+const cookieSession = require('cookie-session')
+const session = require("express-session")
 const ObjectId = require('mongoose').Types.ObjectId
 const querySring = require('querystring')
 
@@ -15,6 +17,16 @@ const app = express()
 
 mongoose.connect('mongodb://localhost/weiboClozed')
 
+app.use(cookieSession({
+  name: 'session',
+  keys: ['helloworld'],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -36,36 +48,65 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 passport.use('login', new LocalStrategy ((username, password, done) => {
+  const authenticated = (username === "1" || username === "2" || username === "3" || username === "4" || username === "5" || username === "6") && password === "password";
 
-  const authenticated = username === "username" && password === "password";
+  let user = new User()
+
+  let date = new Date ()
+  let userName = `user${date.getSeconds()}${date.getMilliseconds()}`
+
+  user.userName = userName
+  user.userPassword = "12345"
+
+  
+  userLevel = 1,
+  user.userClozes = []
+  user.userDictionary = [],
+  dateCreated = date
+
+  user.save()
 
   if (authenticated) {
-    let user = new user()
-
-    let date = new Date ()
-    let userName = `user${date.getSeconds()}${date.getMilliseconds()}`
-
-    user.userName = userName
-    user.userPassword = "12345"
-
-    
-    userLevel = 1,
-    user.userClozes = []
-    user.userDictionary = [],
-    dateCreated = date
-
-    user.save()
-
-    return done(null, { myUser:nameName, myID: 1234 });
+    return done(null, { myUser:userName, myID: 1234 });
   } else {
     return done(null, false);
   }
 }));
 
+passport.serializeUser((user, done) => {
+  console.log(user);
+  done(null, user);
+});
+
+passport.deserializeUser((user, done) => {
+  console.log(user);
+  done(null, user);
+});
+
+function checkAuthentication(req,res,next){
+  console.log(req.isAuthenticated())
+  if(req.isAuthenticated()){
+      //req.isAuthenticated() will return true if user is logged in
+      next();
+  } else{
+      res.redirect("/");
+  }
+}
+
+// app.post('/login', function(req, res, next) {
+//   passport.authenticate('login', function(err, user, info) {
+//     if (err) { return next(err); }
+//     if (!user) { return res.redirect('http://localhost:3000/'); }
+//     req.login(user, function(err) {
+//       if (err) { return next(err); }
+//       return res.redirect('http://localhost:3000/posts');
+//     });
+//   })(req, res, next);
+// });
+
 app.post('/login', passport.authenticate('login', {
-  successRedirect: 'http://localhost:3000/selectLevel',
-  failureRedirect: 'http://localhost:3000/login',
-  session: false
+  successRedirect: 'http://localhost:3000/posts',
+  failureRedirect: 'http://localhost:3000/'
 }));
 
 app.get("/posts", (req, res) => {
@@ -137,6 +178,10 @@ app.post("/post", (req, res) => {
       res.send("Post saved")
     }
   })
+})
+
+app.get("/test", checkAuthentication, (res, req) => {
+  res.send("Success")
 })
 
 app.listen(5005, () => {

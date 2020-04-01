@@ -5,7 +5,10 @@ import './login.css'
 class Login extends Component{
   render() {
     return (
-      <div>Logged In</div>
+      <div>
+       <h3>Logged In</h3>
+       <a href="http://localhost:5005/test">click here!</a>
+      </div>
     )
   }
 }
