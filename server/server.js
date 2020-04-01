@@ -44,6 +44,12 @@ passport.use('login', new LocalStrategy ((username, password, done) => {
   }
 }));
 
+app.post('/login', passport.authenticate('login', {
+  successRedirect: 'http://localhost:3000/selectLevel',
+  failureRedirect: 'http://localhost:3000/',
+  session: false
+}));
+
 app.get("/posts", (req, res) => {
     Post.find({}).exec((err, posts) => {
       if (err) {
