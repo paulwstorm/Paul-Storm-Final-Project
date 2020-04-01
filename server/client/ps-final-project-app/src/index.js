@@ -18,6 +18,7 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route exact path="/" component={SelectLevel} />
+          <Route exact path="/selectlevel" component={Login} />
         </Switch>
       </div>
     </BrowserRouter>
