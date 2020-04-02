@@ -102,37 +102,70 @@ function checkAuthentication(req,res,next){
   }
 }
 
-// app.post('/login', function(req, res, next) {
-//   passport.authenticate('login', function(err, user, info) {
-//     if (err) { return next(err); }
-//     if (!user) { return res.redirect('http://localhost:3000/'); }
-//     req.login(user, function(err) {
-//       if (err) { return next(err); }
-//       return res.redirect('http://localhost:3000/posts');
-//     });
-//   })(req, res, next);
-// });
-
 app.post('/login', passport.authenticate('login', {
   successRedirect: 'http://localhost:3000/posts',
   failureRedirect: 'http://localhost:3000/'
 }));
 
 app.get("/posts", checkAuthentication, (req, res) => {
+  let viewNum = parseInt(req.query.viewNum)
+  let startPost = parseInt(req.query.startPost)
   User.find({userName: req.user.myUser}).exec((err, user) => {
     if (err) {
-      res.writeHead(500)
       res.send(err)
     } else {
-      Post.find({ postLevel: { $lte: user[0].userLevel }}).sort({dateRetrieved: 1}).limit(10).exec((err, posts) => {
+      Post.find({ postLevel: { $lte: user[0].userLevel }}).sort({dateRetrieved: 1}).skip(startPost).limit(viewNum).exec((err, posts) => {
         if (err) {
-          res.writeHead(500)
           res.send(err)
         } else {
           res.send(posts)
         }
       })
     }  
+  })
+})
+
+app.get("/posts/clozes", async (req, res) => {
+  let viewNum = parseInt(req.query.viewNum)
+  let startPost = parseInt(req.query.startPost)
+
+  User.find({userName: req.user.myUser}).exec((err, user) => {
+    if (err) {
+      res.send(err)
+    } else {
+      Post.find({ postLevel: { $lte: user[0].userLevel }}).skip(startPost).limit(viewNum).exec((err, posts) => {
+        Word.find({ level:{ $lte: user[0].userLevel }}).countDocuments().exec((err, wordCount) => {
+          let wordStartIndex = Math.floor(Math.random() * (wordCount-(viewNum*3)))
+
+          Word.find({ level:{ $lte: user[0].userLevel }}).limit((viewNum*3)).skip(wordStartIndex).exec((err, words) => {
+            let clozedPosts = []
+            let count = 0
+            posts.forEach((post) => {
+              let clozedPost = []
+              let toRemove = Math.floor(Math.random() * post.postWordsPos.length)
+              let removedWord = post.postWordsPos[toRemove]
+              console.log(`${count}, ${toRemove}, ${removedWord}, ${post.postWordsPos}`)
+              let clozedPostContent = post.postContent.replace(removedWord[0], "____") 
+
+              replacementWords = []
+              replacementWords.push(words[count].word)
+              replacementWords.push(words[count + 1].word)
+              replacementWords.push(words[count + 2].word)
+
+              clozedPost.push(clozedPostContent)
+              clozedPost.push(removedWord)
+              clozedPost.push(replacementWords)
+
+              clozedPosts.push(clozedPost)
+
+              count += 3
+            })
+
+            res.send({posts, clozedPosts})
+          })
+        })
+      })
+    }
   })
 })
 

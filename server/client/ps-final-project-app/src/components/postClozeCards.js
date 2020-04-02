@@ -2,10 +2,10 @@ import React from 'react';
 import { Component } from 'react'
 import { connect } from "react-redux"
 import { Button, Card, Image, Row, Col } from 'react-bootstrap'
-import './postCards.css'
+import './postClozeCards.css'
 import * as actions from "../actions/index.js"
 
-class PostCards extends Component{
+class PostClozeCards extends Component{
     renderZhihuContent(post) {
         if (post.postImageUrl.length == 0) {
             return (
@@ -90,6 +90,6 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, actions)(PostCards)
+export default connect(mapStateToProps, actions)(PostClozeCards)
 
     

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Component } from 'react'
+import { Component, Link } from 'react'
 import { connect } from "react-redux"
 import { Button, Card, Row, Col } from 'react-bootstrap'
 import './posts.css'
@@ -12,12 +12,50 @@ class Posts extends Component{
         super()
 
         this.state = {
-            viewNum: 10
+            viewNum: 10,
+            startPost: 0
         }
     }
 
     componentDidMount() {
-        this.props.getPosts(this.state.viewNum)
+        this.props.getPosts(this.props.viewNum, this.props.startPost)
+    }
+
+    renderButtons() {
+        if (this.props.startPost > 9 && this.props.startPost <= 90 ) {
+            return (
+                <Row>
+                    <Col xs={1}></Col>
+                        <Col xs={10}>
+                            <Button className="lessPosts" onClick={event => { this.props.getPosts(this.props.viewNum, (this.props.startPost - 10)); this.props.decrementPostNumber(this.props.viewNum); window.scrollTo(0, 0)}}>Back</Button>
+                            <Button className="clozePosts" href="/posts/clozes">Cloze!</Button>
+                            <Button className="morePosts" onClick={event => { this.props.getPosts(this.props.viewNum, (this.props.startPost + 10)); this.props.incrementPostNumber(this.props.viewNum); window.scrollTo(0, 0)}}>Next</Button>
+                        </Col>
+                    <Col xs={1}></Col>
+                </Row>  
+            )
+        } else if (this.props.startPost < 10) {
+            return (
+                <Row>
+                    <Col xs={2}></Col>
+                        <Col xs={8}>
+                            <Button className="clozePosts" href="/posts/clozes">Cloze!</Button>
+                            <Button className="morePosts" onClick={event => { this.props.getPosts(this.props.viewNum, (this.props.startPost + 10)); this.props.incrementPostNumber(this.props.viewNum); window.scrollTo(0, 0)}}>Next</Button>                        </Col>
+                    <Col xs={2}></Col>
+                </Row>  
+            )
+        } else if (this.props.startPost > 90) {
+            return (
+                <Row>
+                    <Col xs={2}></Col>
+                        <Col xs={8}>
+                            <Button className="clozePosts" href="/posts/clozes">Cloze!</Button>
+                            <Button className="lessPosts" onClick={event => { this.props.getPosts(this.props.viewNum, (this.props.startPost - 10)); this.props.decrementPostNumber(this.prps.viewNum); window.scrollTo(0, 0)}}>Back</Button>
+                        </Col>
+                    <Col xs={2}></Col>
+                </Row>  
+            )
+        }
     }
 
     render() {
@@ -37,7 +75,8 @@ class Posts extends Component{
                 return (
                     <div>
                         <Header />
-                        <PostCards />    
+                        <PostCards />
+                        { this.renderButtons() }
                     </div>
                 )
             }
@@ -46,7 +85,9 @@ class Posts extends Component{
 
 function mapStateToProps(state) {
     return {
-        posts: state.posts
+        posts: state.posts,
+        viewNum: state.viewNum,
+        startPost: state.startPost
     }
 }
 

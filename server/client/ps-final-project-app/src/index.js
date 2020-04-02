@@ -7,6 +7,7 @@ import promise from "redux-promise";
 import Posts from "./components/posts.js"
 import SelectLevel from "./components/selectLevel.js"
 import Login from "./components/login.js"
+import PostClozes from "./components/postClozes.js"
 import './index.css'
 
 import rootReducer from "./reducers/index.js";
@@ -21,6 +22,7 @@ ReactDOM.render(
           <Route exact path="/" component={SelectLevel} />
           <Route exact path="/test" component={Login} />
           <Route exact path="/posts" component={Posts} />
+          <Route exact path="/posts/clozes" component={PostClozes} />
         </Switch>
       </div>
     </BrowserRouter>
