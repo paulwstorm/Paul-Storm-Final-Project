@@ -2,6 +2,8 @@
     margin: 10vh;
     border: solid .7vh;
     border-color: #FFA424;
+    background-color: #ffff;
+    box-shadow: 3px 3px 5px 6px #ccc;
 }
 
 .fa-weibo, .fa-zhihu {
@@ -9,6 +11,12 @@
     margin-top: 1vh;
     text-align: right;
     float: right;
+}
+
+.fa-zhihu {
+    color: #0084FF;
+    display: block;
+    clear: both;
 }
 
 .user {
@@ -24,24 +32,35 @@
 }
 
 .card-bottom {
-    margin-top: 10px;
 }
 
 .postContent {
-    margin-bottom: 3vh;
+    clear: both;
+    margin-bottom: 1vh;
+    display: block;
+}
+
+.zhihuContent {
+    margin-top: 4vh;
+    margin-bottom: 5vh;
+}
+
+.zhihuImage {
+    width: 100%;
 }
 
 .postPopularity {
+    margin-top: 2vh;
     border: solid 1px;
     background-color: #FFFF;
     color: #A052FF;
     font-size: 2.8vh;
-    margin-right: 15%;
-    padding: 1.13vh;
+    padding: .8vh;
     border-radius: .85vh;
 }
 
 .userUrl {
+    margin-top: 2vh;
     background-color: #FFFF;
     color: #A052FF;
     font-size: 2.8vh;
@@ -50,9 +69,17 @@
 }
 
 .userUrl:hover {
+    margin-top: 2vh;
     background-color: #A052FF;
     border-style: none;
     font-size: 2.8vh;
     padding: .8vh;
     border: solid 1px;
+}
+
+.addCloze {
+    margin-top: 1vh;
+    color:  #A052FF;
+    font-size: 7vh;
+    margin-bottom: 1vh;
 }
