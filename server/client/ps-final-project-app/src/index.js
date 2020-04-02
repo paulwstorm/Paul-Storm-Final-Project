@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import promise from "redux-promise";
 import Posts from "./components/posts.js"
 import SelectLevel from "./components/selectLevel.js"
+import Login from "./components/login.js"
 import './index.css'
 
 import rootReducer from "./reducers/index.js";
@@ -18,6 +19,7 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route exact path="/" component={SelectLevel} />
+          <Route exact path="/test" component={Login} />
           <Route exact path="/posts" component={Posts} />
         </Switch>
       </div>

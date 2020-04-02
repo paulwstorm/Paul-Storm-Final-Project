@@ -2,18 +2,13 @@ import axios from "axios"
 
 const ROOT_URL = "http://localhost:5005"
 
-export const GET_POST = 'get_posts'
+export const GET_POSTS = 'get_posts'
 
 export function getPosts(viewNum) {
-    const posts = axios.get(`${ROOT_URL}/posts?viewnNum=${viewNum}`)
-    .catch((error) => {
-        if (error.response) {
-            alert(error)
-        }
-    })
+    const posts = axios.get(`${ROOT_URL}/posts?viewnNum=${viewNum}`, {withCredentials: true})
 
     return {
-        type: GET_POST,
+        type: GET_POSTS,
         payload: posts
     }
 }

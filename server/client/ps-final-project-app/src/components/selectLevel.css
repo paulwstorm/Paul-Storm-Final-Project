@@ -5,7 +5,7 @@
 
 .level-button {
     margin-bottom: 6%;
-    background-color: #8A40FF;
+    background-color: #A052FF;
     border-style: none;
     border: solid 1px;
     margin-left: 5%;
@@ -15,7 +15,7 @@
 .level-button:hover {
     margin-bottom: 6%;
     background-color: #FFFF;
-    color: #8A40FF;
+    color: #A052FF;
     border: solid 1px;
     margin-left: 5%;
     margin-right: 5%;

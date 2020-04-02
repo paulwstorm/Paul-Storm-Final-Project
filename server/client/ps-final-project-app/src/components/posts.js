@@ -1,9 +1,10 @@
 import React from 'react';
 import { Component } from 'react'
 import { connect } from "react-redux"
-import { Card, Row, Col } from 'react-bootstrap'
+import { Button, Card, Row, Col } from 'react-bootstrap'
 import './posts.css'
 import Header from "./header.js"
+import PostCards from "./postCards.js"
 import * as actions from "../actions/index.js"
 
 class Posts extends Component{
@@ -19,40 +20,25 @@ class Posts extends Component{
         this.props.getPosts(this.state.viewNum)
     }
 
-    renderPost() {
-        return (
-            <div>
-                <Header />
-                <Row>
-                    <Col sm={3}></Col>
-                    <Col sm={6}>
-                        <Card>
-                            <div>Posts will go where!</div>
-                        </Card>
-                    </Col>
-                    <Col sm={3}></Col>
-                </Row>
-            </div>
-        )
-    }
     render() {
-        if (this.props.posts == undefined) {
+        if (this.props.posts.length == 0) {
             return (
                 <div>
                     <Header />
                     <Row>
-                        <Col sm={3}></Col>
-                        <Col sm={6}>
-                            <Card>
-                                <div>Loading!</div>
-                            </Card>
+                        <Col xs={4}></Col>
+                        <Col xs={4}>
+                            <h2 className="loading">Loading Posts!</h2>
                         </Col>
-                        <Col sm={3}></Col>
+                        <Col xs={4}></Col>
                     </Row>
                 </div>
             )} else {
                 return (
-                    this.renderPosts()
+                    <div>
+                        <Header />
+                        <PostCards />    
+                    </div>
                 )
             }
         }

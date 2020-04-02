@@ -33,6 +33,15 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
+
+app.use(
+  cors({
+    origin: "http://localhost:3000", // allow to server to accept request from different origin
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true // allow session cookie from browser to pass through
+  })
+);
+
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets
   // like our main.js file, or main.css file!
@@ -59,7 +68,7 @@ passport.use('login', new LocalStrategy ((username, password, done) => {
   user.userPassword = "12345"
 
   
-  userLevel = 1,
+  user.userLevel = parseInt(username),
   user.userClozes = []
   user.userDictionary = [],
   dateCreated = date
@@ -109,15 +118,22 @@ app.post('/login', passport.authenticate('login', {
   failureRedirect: 'http://localhost:3000/'
 }));
 
-app.get("/posts", (req, res) => {
-    Post.find({}).exec((err, posts) => {
-      if (err) {
-        res.writeHead(500)
-        res.send(err)
-      } else {
-        res.send(posts)
-      }
-    })
+app.get("/posts", checkAuthentication, (req, res) => {
+  User.find({userName: req.user.myUser}).exec((err, user) => {
+    if (err) {
+      res.writeHead(500)
+      res.send(err)
+    } else {
+      Post.find({ postLevel: { $lte: user[0].userLevel }}).sort({dateRetrieved: 1}).limit(10).exec((err, posts) => {
+        if (err) {
+          res.writeHead(500)
+          res.send(err)
+        } else {
+          res.send(posts)
+        }
+      })
+    }  
+  })
 })
 
 app.get("/clozes/newCloze", async (req, res) => {
@@ -167,20 +183,7 @@ app.get("/clozes/newCloze", async (req, res) => {
   })
 })
 
-app.post("/post", (req, res) => {
-  let post = new Post()
-
-  post.save((err, post) => {
-    if (err) {
-      res.writeHead(500)
-      res.send(err)
-    } else {
-      res.send("Post saved")
-    }
-  })
-})
-
-app.get("/test", checkAuthentication, (res, req) => {
+app.get("/test", checkAuthentication, (req, res) => {
   res.send("Success")
 })
 
