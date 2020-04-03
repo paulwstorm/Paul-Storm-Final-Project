@@ -33,6 +33,16 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
+function shuffle(a) {
+  var j, x, i;
+  for (i = a.length - 1; i > 0; i--) {
+      j = Math.floor(Math.random() * (i + 1));
+      x = a[i];
+      a[i] = a[j];
+      a[j] = x;
+  }
+  return a;
+}
 
 app.use(
   cors({
@@ -125,7 +135,7 @@ app.get("/posts", checkAuthentication, (req, res) => {
   })
 })
 
-app.get("/posts/clozes", async (req, res) => {
+app.get("/posts/clozes",  (req, res) => {
   let viewNum = parseInt(req.query.viewNum)
   let startPost = parseInt(req.query.startPost)
 
@@ -133,18 +143,18 @@ app.get("/posts/clozes", async (req, res) => {
     if (err) {
       res.send(err)
     } else {
-      Post.find({ postLevel: { $lte: user[0].userLevel }}).skip(startPost).limit(viewNum).exec((err, posts) => {
+      Post.find({ postLevel: { $lte: user[0].userLevel }}).sort({dateRetrieved: 1}).skip(startPost).limit(viewNum).exec((err, posts) => {
         Word.find({ level:{ $lte: user[0].userLevel }}).countDocuments().exec((err, wordCount) => {
           let wordStartIndex = Math.floor(Math.random() * (wordCount-(viewNum*3)))
 
           Word.find({ level:{ $lte: user[0].userLevel }}).limit((viewNum*3)).skip(wordStartIndex).exec((err, words) => {
             let clozedPosts = []
             let count = 0
+            words = shuffle(words)
             posts.forEach((post) => {
               let clozedPost = []
               let toRemove = Math.floor(Math.random() * post.postWordsPos.length)
               let removedWord = post.postWordsPos[toRemove]
-              console.log(`${count}, ${toRemove}, ${removedWord}, ${post.postWordsPos}`)
               let clozedPostContent = post.postContent.replace(removedWord[0], "____") 
 
               replacementWords = []
@@ -164,6 +174,25 @@ app.get("/posts/clozes", async (req, res) => {
             res.send({posts, clozedPosts})
           })
         })
+      })
+    }
+  })
+})
+
+app.post("/posts/clozes", (req, res) => {
+  let markedCloze = req.body
+
+  User.findOne({userName: req.user.myUser}).exec((err, user) => {
+    if (err) {
+      res.send(err)
+    } else {
+      user.userClozes.push(markedCloze)
+      user.save((err) => {
+        if (err) {
+          res.send(err)
+        } else {
+          res.send("Cloze added to userClozes")
+        }
       })
     }
   })

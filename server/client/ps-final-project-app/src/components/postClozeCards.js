@@ -6,6 +6,18 @@ import './postClozeCards.css'
 import * as actions from "../actions/index.js"
 
 class PostClozeCards extends Component{
+
+    checkCorrect(guessed, answer, cloze) {
+        if (guessed == answer) {
+            alert("宝贝很棒哦！\n Correct!")
+            let mark="correct"
+            this.props.markClozeCorrect(mark, cloze, this.props.clozes)
+        } else {
+            alert("哎呀！宝贝要加油啊！\n Incorrect!")
+            let mark="incorrect"
+            this.props.markClozeCorrect(mark, cloze, this.props.clozes)
+        }
+    }
     renderZhihuContent(post) {
         if (post.postImageUrl.length == 0) {
             return (
@@ -26,7 +38,6 @@ class PostClozeCards extends Component{
     }
 
     renderPosts(post) {
-        console.log(post)
         if (post.postSource == "weibo") {
             return (
                 <div>
@@ -37,10 +48,25 @@ class PostClozeCards extends Component{
                                 <div class="card-body">
                                     <div className="user"><Image className="userImage" roundedCircle fluid src={post.postUserImageUrl} /><span>{post.postUser}</span><i class="fab fa-weibo fa-2x"></i></div>
                                     <div className="postContent">{ post.postContent }</div>
-                                    <Row className="cardBotom">                                    
-                                            <Col xs={4}><div className="postPopularity">{post.postPopularity}</div></Col>
-                                            <Col xs={4}><Button className="userUrl" href={`https://www.weibo.com/${post.postUserUrl}`} target='_blank'>See User</Button></Col>
-                                            <Col xs={4}><span class="material-icons addCloze">add_circle_outline</span></Col>
+                                    <Row className="multipleChoiceTop">     
+                                        <Col xs={2}></Col>
+                                        <Col xs={4}>
+                                            <Button className="multipleChoice" value={ post.multipleChoiceWords[0] } onClick={event => {this.checkCorrect(event.target.value, post.removedWord, post)}}>{ post.multipleChoiceWords[0] }</Button>
+                                        </Col>                               
+                                        <Col xs={4}>
+                                            <Button className="multipleChoice" value={ post.multipleChoiceWords[1] } onClick={event => {this.checkCorrect(event.target.value, post.removedWord, post)}}>{ post.multipleChoiceWords[1] }</Button>
+                                        </Col>   
+                                        <Col xs={2}></Col>     
+                                    </Row>
+                                    <Row className="multipleChoiceTop">     
+                                        <Col xs={2}></Col>
+                                        <Col xs={4}>
+                                            <Button className="multipleChoice" value={ post.multipleChoiceWords[2] } onClick={event => {this.checkCorrect(event.target.value, post.removedWord, post)}}>{ post.multipleChoiceWords[2] }</Button>
+                                        </Col>                               
+                                        <Col xs={4}>
+                                            <Button className="multipleChoice" value={ post.multipleChoiceWords[3] } onClick={event => {this.checkCorrect(event.target.value, post.removedWord, post)}}>{ post.multipleChoiceWords[3] }</Button>
+                                        </Col>   
+                                        <Col xs={2}></Col>     
                                     </Row>
                                 </div>
                             </Card>
@@ -62,10 +88,25 @@ class PostClozeCards extends Component{
                                         <Col xs={5}><div><i class="fab fa-zhihu fa-2x"></i></div></Col>
                                     </Row>
                                     { this.renderZhihuContent(post)}
-                                    <Row className="cardBotom">                                    
-                                        <Col xs={4}><div className="postPopularity">{post.postPopularity}</div></Col>
-                                        <Col xs={4}><Button className="userUrl" href={`https://www.weibo.com/${post.postUrl}`} target='_blank'>See on Zhihu</Button></Col>
-                                        <Col xs={4}><span class="material-icons addCloze">add_circle_outline</span></Col>
+                                    <Row className="multipleChoiceTop">     
+                                        <Col xs={2}></Col>
+                                        <Col xs={4}>
+                                            <Button className="multipleChoice" value={ post.multipleChoiceWords[0] } onClick={event => {this.checkCorrect(event.target.value, post.removedWord, post)}}>{ post.multipleChoiceWords[0] }</Button>
+                                        </Col>                               
+                                        <Col xs={4}>
+                                            <Button className="multipleChoice" value={ post.multipleChoiceWords[1] } onClick={event => {this.checkCorrect(event.target.value, post.removedWord, post)}}>{ post.multipleChoiceWords[1] }</Button>
+                                        </Col>   
+                                        <Col xs={2}></Col>     
+                                    </Row>
+                                    <Row className="multipleChoiceTop">     
+                                        <Col xs={2}></Col>
+                                        <Col xs={4}>
+                                            <Button className="multipleChoice" value={ post.multipleChoiceWords[2] } onClick={event => {this.checkCorrect(event.target.value, post.removedWord, post)}}>{ post.multipleChoiceWords[2] }</Button>
+                                        </Col>                               
+                                        <Col xs={4}>
+                                            <Button className="multipleChoice" value={ post.multipleChoiceWords[3] } onClick={event => {this.checkCorrect(event.target.value, post.removedWord, post)}}>{ post.multipleChoiceWords[3] }</Button>
+                                        </Col>   
+                                        <Col xs={2}></Col>     
                                     </Row>
                                 </div>
                             </Card>
@@ -79,14 +120,14 @@ class PostClozeCards extends Component{
 
     render() {
         return (
-            this.props.posts.map(post => (this.renderPosts(post)))
+            this.props.clozes.map(post => (this.renderPosts(post)))
         )
     }
 }
 
 function mapStateToProps(state) {
     return {
-        posts: state.posts
+        clozes: state.clozes
     }
 }
 

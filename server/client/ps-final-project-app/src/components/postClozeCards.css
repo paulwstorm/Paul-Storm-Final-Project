@@ -47,37 +47,17 @@
     border: solid;
 }
 
-.postPopularity {
-    margin-top: 2vh;
-    border: solid 1px;
+.multipleChoice {
     background-color: #FFFF;
     color: #A052FF;
     font-size: 2.8vh;
-    padding: .8vh;
-    border-radius: .85vh;
-}
 
-.userUrl {
-    margin-top: 2vh;
-    background-color: #FFFF;
-    color: #A052FF;
-    font-size: 2.8vh;
-    padding: .8vh;
     border: solid 1px;
 }
 
-.userUrl:hover {
-    margin-top: 2vh;
+.multipleChoice:hover {
     background-color: #A052FF;
     border-style: none;
     font-size: 2.8vh;
-    padding: .8vh;
     border: solid 1px;
-}
-
-.addCloze {
-    margin-top: 1vh;
-    color:  #A052FF;
-    font-size: 7vh;
-    margin-bottom: 1vh;
 }

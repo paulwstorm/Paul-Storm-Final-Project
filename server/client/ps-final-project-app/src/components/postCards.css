@@ -57,7 +57,7 @@
     border-radius: .85vh;
 }
 
-.userUrl {
+.userUrl, .postUrl {
     margin-top: 2vh;
     background-color: #FFFF;
     color: #A052FF;
@@ -66,7 +66,7 @@
     border: solid 1px;
 }
 
-.userUrl:hover {
+.userUrl:hover, .postUrl:hover {
     margin-top: 2vh;
     background-color: #A052FF;
     border-style: none;

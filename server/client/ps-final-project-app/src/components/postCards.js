@@ -64,7 +64,7 @@ class PostCards extends Component{
                                     { this.renderZhihuContent(post)}
                                     <Row className="cardBotom">                                    
                                         <Col xs={4}><div className="postPopularity">{post.postPopularity}</div></Col>
-                                        <Col xs={4}><Button className="userUrl" href={`https://www.weibo.com/${post.postUrl}`} target='_blank'>See on Zhihu</Button></Col>
+                                        <Col xs={4}><Button className="postUrl" href={post.postUrl} target='_blank'>See on Zhihu</Button></Col>
                                         <Col xs={4}><span class="material-icons addCloze">add_circle_outline</span></Col>
                                     </Row>
                                 </div>
