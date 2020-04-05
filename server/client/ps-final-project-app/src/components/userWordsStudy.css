@@ -1,0 +1,38 @@
+.study-read-words:hover  {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+
+.study-read-words {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 3vh;
+    background-color: #0084FF;
+    border-style: none;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.study-study-words {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+
+.study-study-words:hover {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}

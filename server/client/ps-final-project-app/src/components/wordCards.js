@@ -8,19 +8,35 @@ class WordCards extends Component{
 
     renderWord(word) {
         return (
-            <div>
-                <Row>
-                    <Col md={2}></Col>
-                    <Col md={8}>
-                        <Card className="postCard">
-                            <div class="card-body">
-                                {word.simplified}
-                            </div>
-                        </Card>
-                    </Col>
-                    <Col md={2}></Col>
-                </Row>
-            </div>
+            <Row>
+                <Col s={10}>
+                    <div className="word-card">
+                        <Row>
+                            <Col s={12}>
+                                <div className="simplified-traditional">
+                                    <span className="simplified-char">{word.simplified}</span>
+                                    <span className="traditional-char">({word.traditional})</span>
+                                </div>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col s={12}>
+                                <div className="pinyin">
+                                    {word.pinyin}
+                                </div>
+                                <div className="entry-POS">{word.partOfSpeech}</div>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col s={12}>
+                                <div className="english-definition">
+                                    {word.english}
+                                </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </Col>
+            </Row>
         )
     }
 

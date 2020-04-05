@@ -27,7 +27,25 @@
     margin-right: 5%;
 }
 
-.words-read-words:hover, .words-test-words:hover  {
+.words-read-words:hover  {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.words-read-words {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.words-study-words {
     vertical-align: middle;
     text-align: center;
     font-size: 3vh;
@@ -37,7 +55,7 @@
     margin: 5%;
 }
 
-.words-read-words, .words-test-words {
+.words-study-words:hover {
     vertical-align: middle;
     font-size: 3vh;
     background-color: #FFFF;

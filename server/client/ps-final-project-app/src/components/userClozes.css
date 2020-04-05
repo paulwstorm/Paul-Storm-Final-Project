@@ -35,7 +35,7 @@
 
 .postContent {
     clear: both;
-    margin-bottom: 7vh;
+    margin-bottom: 5vh;
     display: block;
 }
 
@@ -83,6 +83,43 @@
 }
 
 .view-incorrect, .view-all {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.button-on:hover  {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.button-on {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.button-off {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 3vh;
+    background-color: #0084FF;
+    border-style: none;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.button-off:hover {
     vertical-align: middle;
     font-size: 3vh;
     background-color: #FFFF;

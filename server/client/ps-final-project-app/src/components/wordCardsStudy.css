@@ -1,12 +1,14 @@
-.word-card {
+.word-study-card {
     margin-bottom: 10vh;
     margin-left: 25%;
     width: 50%;
-    text-align: center;
     border: solid .7vh;
     border-color: #FFA424;
     background-color: #ffff;
     box-shadow: 3px 3px 5px 6px #ccc;
     font-size: 3.3vh;
-    padding: 3vh;
+}
+
+.word-modal {
+    margin-top: 15%;
 }

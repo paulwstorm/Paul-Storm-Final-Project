@@ -13,7 +13,9 @@ class UserClozes extends Component{
 
         this.state = {
             show: false,
-            view: "incorrect"
+            view: "incorrect",
+            incorrectButton: "button-on",
+            allButton: "button-off"
         }
     }
 
@@ -80,8 +82,8 @@ class UserClozes extends Component{
                         <Row>
                             <Col xs={2}></Col>
                                 <Col xs={8}>
-                                    <Button className="view-incorrect" onClick={() => this.handleToggleClick("incorrect")}>Incorrect</Button>
-                                    <Button className="view-all" onClick={() => this.handleToggleClick("all")}>All</Button>
+                                    <Button className={this.state.incorrectButton} onClick={() => {this.handleToggleClick("incorrect"); this.setState({allButton: "button-off"}); this.setState({incorrectButton: "button-on"})}}>Incorrect</Button>
+                                    <Button className={this.state.allButton} onClick={() => {this.handleToggleClick("all"); this.setState({incorrectButton: "button-off"}); this.setState({allButton: "button-on"})}}>All</Button>
                                 </Col>
                             <Col xs={2}></Col>
                         </Row>  

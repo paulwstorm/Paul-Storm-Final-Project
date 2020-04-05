@@ -55,6 +55,7 @@ class PostCards extends Component{
     }
 
     renderPosts(post) {
+        console.log(post)
         if (post.postSource == "weibo") {
             return (
                 <div>

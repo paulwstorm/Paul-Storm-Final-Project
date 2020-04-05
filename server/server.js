@@ -16,7 +16,9 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const app = express()
 
+// mongoose.connect('mongodb://localhost/weiboClozed')
 mongoose.connect('mongodb://paulStorm:w31b020200403@ds231387.mlab.com:31387/heroku_1xm0ffdd')
+
 
 app.use(cookieSession({
   name: 'session',
@@ -130,19 +132,21 @@ app.post('/login', passport.authenticate('login', {
 app.get("/posts", checkAuthentication, (req, res) => {
   let viewNum = parseInt(req.query.viewNum)
   let startPost = parseInt(req.query.startPost)
-  User.find({userName: req.user.myUser}).exec((err, user) => {
-    if (err) {
-      res.send(err)
-    } else {
-      Post.find({ postLevel: { $lte: user[0].userLevel }}).sort({dateRetrieved: -1}).skip(startPost).limit(viewNum).exec((err, posts) => {
-        if (err) {
-          res.send(err)
-        } else {
-          res.send(posts)
-        }
-      })
-    }  
-  })
+  Post.deleteMany({postChars: { $size: 0 }}).exec((err) => {
+    User.find({userName: req.user.myUser}).exec((err, user) => {
+      if (err) {
+        res.send(err)
+      } else {
+        Post.find({ postLevel: { $lte: user[0].userLevel }}).sort({dateRetrieved: -1}).skip(startPost).limit(viewNum).exec((err, posts) => {
+          if (err) {
+            res.send(err)
+          } else {
+            res.send(posts)
+          }
+        })
+      }  
+    })
+  })  
 })
 
 

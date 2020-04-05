@@ -22,8 +22,8 @@ export function getPosts(viewNum, startPost) {
     }
 }
 
-export function getPostClozes(viewNum, startPost) {
-    const clozes = axios.get(`${ROOT_URL}/posts/clozes?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
+export async function getPostClozes(viewNum, startPost) {
+    const clozes = await axios.get(`${ROOT_URL}/posts/clozes?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
 
     return {
         type: GET_POST_CLOZES,
@@ -34,7 +34,6 @@ export function getPostClozes(viewNum, startPost) {
 export function getUserClozes(viewNum, startPost, view) {
     const userClozes = axios.get(`${ROOT_URL}/user/clozes?viewNum=${viewNum}&startPost=${startPost}&view=${view}`, {withCredentials: true})
 
-    console.log(`${ROOT_URL}/user/clozes?viewNum=${viewNum}&startPost=${startPost}&view=${view}`)
     return {
         type: GET_USER_CLOZES,
         payload: userClozes

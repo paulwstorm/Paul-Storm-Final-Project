@@ -16,15 +16,16 @@ export default function(state = [], action) {
         case GET_POST_CLOZES:
             let newState = []
             newState = action.payload.data
+            console.log(newState.clozedPosts[9])
             if (newState.clozedPosts == undefined) {
                 newState = []
                 return newState
             } else {
                 for (var i = 0; i < newState.posts.length; i ++) {
                     newState.posts[i].postClozedTokenizedContent = newState.clozedPosts[i][0]
-                    let removedWord = newState.clozedPosts[i][1]
                     let multipleChoiceWords = newState.clozedPosts[i][2]
                     multipleChoiceWords.push(newState.clozedPosts[i][1][0])
+                    let removedWord = newState.clozedPosts[i][1]
                     newState.posts[i].removedWord = removedWord[0]
                     multipleChoiceWords = shuffle(multipleChoiceWords)
                     newState.posts[i].multipleChoiceWords = multipleChoiceWords
@@ -33,7 +34,6 @@ export default function(state = [], action) {
             }
         case GET_USER_CLOZES:
                 state = action.payload.data
-                console.log(state)
                 if (state.clozedPosts == undefined) {
                     state = []
                     return state

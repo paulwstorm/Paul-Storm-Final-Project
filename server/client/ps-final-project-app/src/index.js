@@ -12,6 +12,7 @@ import './index.css'
 import UserPage from "./components/userPage"
 import UserClozes from "./components/userClozes"
 import UserWords from "./components/userWords"
+import UserWordsStudy from "./components/userWordsStudy"
 
 import rootReducer from "./reducers/index.js";
 
@@ -29,6 +30,7 @@ ReactDOM.render(
           <Route exact path="/user" component={UserPage} />
           <Route exact path="/user/clozes" component={UserClozes} />
           <Route exact path="/user/words" component={UserWords} />
+          <Route exact path="/user/words/study" component={UserWordsStudy} />
         </Switch>
       </div>
     </BrowserRouter>
