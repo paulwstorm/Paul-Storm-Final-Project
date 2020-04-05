@@ -1,0 +1,65 @@
+.loading {
+    text-align: center;
+    margin-top: 15vh;
+}
+
+.words-more-words, .words-less-words {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #0084FF;
+    border-style: none;
+    border: solid 1px;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.words-more-words:hover, .words-less-words:hover {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.words-read-words:hover  {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.words-read-words {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.words-study-words {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 3vh;
+    background-color: #0084FF;
+    border-style: none;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.words-study-words:hover {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}

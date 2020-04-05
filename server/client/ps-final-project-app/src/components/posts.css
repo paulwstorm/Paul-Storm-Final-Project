@@ -1,0 +1,67 @@
+.loading {
+    text-align: center;
+    margin-top: 15vh;
+}
+
+.posts-more-posts, .posts-less-posts {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #0084FF;
+    border-style: none;
+    border: solid 1px;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.posts-more-posts:hover, .posts-less-posts:hover {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.posts-cloze-posts {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #0084FF;
+    border-style: none;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.posts-cloze-posts:hover {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.posts-read-posts:hover {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #0084FF;
+    border-style: none;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.posts-read-posts {
+    vertical-align: middle;
+    font-size: 4vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}

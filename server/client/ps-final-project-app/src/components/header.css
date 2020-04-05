@@ -1,0 +1,44 @@
+body {
+    width: 100%;
+    text-align: center;
+    font-size: 200%;
+}
+
+.header {
+    background-color: #37FF70;
+    height: 8vh;
+}
+
+.header-text {
+    color: #595959;
+}
+
+.header-div {
+    font-size: 250em;
+}
+
+.search-icon {
+    color: #595959;
+    float: right;
+    margin-right: 5%;
+}
+
+.search-icon:hover {
+    color: #595959;
+    cursor: pointer;
+    float: right;
+    margin-right: 5%;
+}
+
+.user-icon {
+    color: #595959;
+    float: left;
+    margin-left: 5%;
+}
+
+.user-icon:hover {
+    color: #595959;
+    cursor: pointer;
+    float: left;
+    margin-left: 5%;
+}

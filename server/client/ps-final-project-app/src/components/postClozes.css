@@ -1,0 +1,67 @@
+.loading {
+    text-align: center;
+    margin-top: 15vh;
+}
+
+.posts-clozes-more-posts, .posts-clozes-less-posts {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #0084FF;
+    border-style: none;
+    border: solid 1px;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.posts-clozes-more-posts:hover, .posts-clozes-less-posts:hover {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin-bottom: 10%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.posts-clozes-cloze-posts {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.posts-clozes-cloze-posts:hover {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #0084FF;
+    border-style: none;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.posts-clozes-read-posts:hover {
+    vertical-align: middle;
+    font-size: 4vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.posts-clozes-read-posts {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 4vh;
+    background-color: #0084FF;
+    border-style: none;
+    border: solid 1px;
+    margin: 5%;
+}

@@ -6,19 +6,8 @@ class Login extends Component{
   render() {
     return (
       <div>
-            <form action="http://localhost:5005/login" method="post">
-            <div>
-                <label>Username:</label>
-                <input type="text" name="username"/>
-            </div>
-            <div>
-                <label>Password:</label>
-                <input type="password" name="password"/>
-            </div>
-            <div>
-                <input type="submit" value="Log In"/>
-            </div>
-            </form>
+       <h3>Logged In</h3>
+       <a href="http://localhost:5005/test">click here!</a>
       </div>
     )
   }

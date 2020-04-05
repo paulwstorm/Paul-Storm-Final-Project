@@ -1,0 +1,129 @@
+.postCard {
+    margin-bottom: 10vh;
+    margin-left: 10vh;
+    margin-right: 10vh;    
+    border: solid .7vh;
+    border-color: #FFA424;
+    background-color: #ffff;
+    box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+.fa-weibo, .fa-zhihu {
+    margin-right: 5vh;
+    margin-top: 1vh;
+    text-align: right;
+    float: right;
+}
+
+.fa-zhihu {
+    color: black;
+    display: block;
+    clear: both;
+}
+
+.user {
+    margin-bottom: 4vh;
+    margin-left: 5vh;
+    margin-top: 2vh;
+    text-align: left;
+}
+
+.userImage {
+    margin: 1vh;
+    border: solid;
+}
+
+.postContent {
+    clear: both;
+    margin-bottom: 5vh;
+    display: block;
+}
+
+.zhihuContent {
+    margin-top: 4vh;
+    margin-bottom: 5vh;
+}
+
+.zhihuImage {
+    width: 100%;
+    border: solid;
+}
+
+.multiple-choice {
+    background-color: #FFFF;
+    color: #0084FF;
+    margin: 3%;
+    border: solid 1px;
+}
+
+.multiple-choice:hover {
+    background-color: #0084FF;
+    border-style: none;
+    margin: 3%;
+    border: solid 1px;
+}
+
+.dictionary-modal {
+    display: block;
+}
+
+.modal-content {
+    border: solid .7vh;
+    border-color: #FFA424;
+}
+
+.view-incorrect:hover, .view-all:hover  {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 3vh;
+    background-color: #0084FF;
+    border-style: none;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.view-incorrect, .view-all {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.button-on:hover  {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.button-on {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.button-off {
+    vertical-align: middle;
+    text-align: center;
+    font-size: 3vh;
+    background-color: #0084FF;
+    border-style: none;
+    border: solid 1px;
+    margin: 5%;
+}
+
+.button-off:hover {
+    vertical-align: middle;
+    font-size: 3vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin: 5%;
+}

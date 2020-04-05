@@ -1,0 +1,104 @@
+.postCard {
+    margin-bottom: 10vh;
+    margin-left: 10vh;
+    margin-right: 10vh;
+    border: solid .7vh;
+    border-color: #FFA424;
+    background-color: #ffff;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    font-size: 3.3vh;
+}
+
+.fa-weibo, .fa-zhihu {
+    margin-right: 5vh;
+    margin-top: 1vh;
+    text-align: right;
+    float: right;
+}
+
+.fa-zhihu {
+    color: black;
+    display: block;
+    clear: both;
+}
+
+.user {
+    margin-bottom: 4vh;
+    margin-left: 5vh;
+    margin-top: 2vh;
+    text-align: left;
+}
+
+.userImage {
+    margin: 1vh;
+    border: solid;
+}
+
+.postContent {
+    clear: both;
+    margin-bottom: 5vh;
+    display: block;
+}
+
+.zhihuImage {
+    width: 100%;
+    border: solid;
+}
+
+.postPopularity {
+    margin-top: 2vh;
+    border: solid 1px;
+    background-color: #FFFF;
+    color: #0084FF;
+    font-size: 2.8vh;
+    padding: .8vh;
+    border-radius: .85vh;
+}
+
+.userUrl, .postUrl {
+    margin-top: 2vh;
+    background-color: #FFFF;
+    color: #0084FF;
+    font-size: 2.8vh;
+    padding: .8vh;
+    border: solid 1px;
+}
+
+.userUrl:hover, .postUrl:hover {
+    margin-top: 2vh;
+    background-color: #0084FF;
+    border-style: none;
+    font-size: 2.8vh;
+    padding: .8vh;
+    border: solid 1px;
+}
+
+.addCloze {
+    color:  #0084FF;
+    font-size: 7vh;
+    margin-bottom: 1vh;
+}
+
+.addCloze:hover {
+    cursor: pointer;
+}
+
+.dictionary-modal {
+    display: block;
+}
+
+.modal-content {
+    border: solid .7vh;
+    border-color: #FFA424;
+}
+
+.postUrl {
+    border: none;
+    float: left;
+}
+
+.postUrl:hover {
+    border: none;
+    background-color: #FFFF;
+    float: left;
+}

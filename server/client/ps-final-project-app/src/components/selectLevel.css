@@ -1,0 +1,30 @@
+.selectLevelTitle {
+    margin-top: 5%;
+}
+
+.level-button {
+    margin-bottom: 6%;
+    background-color: #0084FF;
+    border-style: none;
+    border: solid 1px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.level-button:hover {
+    margin-bottom: 6%;
+    background-color: #FFFF;
+    color: #0084FF;
+    border: solid 1px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.intro-paragraph {
+    font-size: 3.3vh;
+    margin-bottom: 3%;
+}
+
+.usernamePassword {
+    display: None;
+}
