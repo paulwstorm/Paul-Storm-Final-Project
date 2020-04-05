@@ -1,0 +1,33 @@
+.entry {
+    margin-bottom: 10%;
+}
+
+.entry-num {
+    float: left;
+    margin-left: 2%;
+    color: #0084FF;}
+
+.add-word {
+    color: #0084FF;
+}
+
+.add-word {
+    cursor: pointer;
+}
+
+.simplified-char, .traditional-char {
+    margin-left: 3%;
+    margin-right: 5%;
+    margin-bottom: 1%;
+}
+
+.pinyin, .entry-POS {
+    font-size: .5em;
+}
+
+.search-bar {
+    margin-top: 5%;
+    margin-bottom: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+}

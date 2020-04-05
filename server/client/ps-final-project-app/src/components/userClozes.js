@@ -2,14 +2,28 @@ import React from 'react';
 import { Component } from 'react'
 import { connect } from "react-redux"
 import { Button, Card, Row, Col } from 'react-bootstrap'
-import './postClozes.css'
+import './userClozes.css'
 import Header from "./header.js"
 import PostClozeCards from "./postClozeCards.js"
 import * as actions from "../actions/index.js"
 
-class PostClozes extends Component{
+class UserClozes extends Component{
+    constructor () {
+        super()
+
+        this.state = {
+            show: false,
+            view: "incorrect"
+        }
+    }
+
     componentDidMount() {
-        this.props.getPostClozes(this.props.viewNum, this.props.startPost)
+        this.props.getUserClozes(this.props.viewNum, this.props.startPost, this.state.view)
+    }
+
+    async handleToggleClick(view) {
+        await this.setState({view: view})
+        this.props.getUserClozes(this.props.viewNum, this.props.startPost, this.state.view)
     }
 
     renderButtons() {
@@ -29,7 +43,7 @@ class PostClozes extends Component{
                 <Row>
                     <Col xs={2}></Col>
                         <Col xs={8}>
-                            <Button className="posts-clozes-more-posts" onClick={event => { this.props.getPostClozes(this.props.viewNum, (this.props.startPost + 10)); this.props.incrementPostNumber(this.props.viewNum); window.scrollTo(0, 0)}}>Next</Button>                        </Col>
+                            <Button className="posts-clozes-more-posts" onClick={event => { this.props.getUserClozes(this.props.viewNum, (this.props.startPost + 10), this.state.view); this.props.incrementPostNumber(this.props.viewNum); window.scrollTo(0, 0)}}>Next</Button>                        </Col>
                     <Col xs={2}></Col>
                 </Row>  
             )
@@ -38,7 +52,7 @@ class PostClozes extends Component{
                 <Row>
                 <Col xs={2}></Col>
                     <Col xs={8}>
-                        <Button className="lposts-clozes-less-posts" onClick={event => { this.props.getPostClozes(this.props.viewNum, (this.props.startPost - 10)); this.props.decrementPostNumber(this.prps.viewNum); window.scrollTo(0, 0)}}>Back</Button>
+                        <Button className="lposts-clozes-less-posts" onClick={event => { this.props.getUserClozes(this.props.viewNum, (this.props.startPost - 10), this.state.view); this.props.decrementPostNumber(this.prps.viewNum); window.scrollTo(0, 0)}}>Back</Button>
                     </Col>
                 <Col xs={2}></Col>
             </Row>  
@@ -54,7 +68,7 @@ class PostClozes extends Component{
                     <Row>
                         <Col xs={4}></Col>
                         <Col xs={4}>
-                            <h2 className="loading">Loading Clozes!</h2>
+                            <h2 className="loading">See your saved posts here!</h2>
                         </Col>
                         <Col xs={4}></Col>
                     </Row>
@@ -66,8 +80,8 @@ class PostClozes extends Component{
                         <Row>
                             <Col xs={2}></Col>
                                 <Col xs={8}>
-                                    <Button className="posts-clozes-read-posts" href="/posts/">Read</Button>
-                                    <Button className="posts-clozes-cloze-posts" href="/posts/clozes">Challenge</Button>
+                                    <Button className="view-incorrect" onClick={() => this.handleToggleClick("incorrect")}>Incorrect</Button>
+                                    <Button className="view-all" onClick={() => this.handleToggleClick("all")}>All</Button>
                                 </Col>
                             <Col xs={2}></Col>
                         </Row>  
@@ -87,4 +101,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, actions)(PostClozes)
+export default connect(mapStateToProps, actions)(UserClozes)

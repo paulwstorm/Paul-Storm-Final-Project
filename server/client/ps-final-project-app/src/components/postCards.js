@@ -1,24 +1,53 @@
 import React from 'react';
 import { Component } from 'react'
 import { connect } from "react-redux"
-import { Button, Card, Image, Row, Col } from 'react-bootstrap'
+import { Button, Card, Image, Row, Col, ModalBody } from 'react-bootstrap'
+import { Link } from "react-router-dom"
+import Modal from 'react-bootstrap/Modal'
 import './postCards.css'
+import DictionaryEntry from "./dictionaryEntry.js"
 import * as actions from "../actions/index.js"
 
 class PostCards extends Component{
-    renderZhihuContent(post) {
+    constructor () {
+        super()
+
+        this.state = {
+            show: false
+        }
+    }
+
+    renderPostWords(postContent) {
+        return (
+            postContent.map(word => {
+                return <span onClick={() => {this.setState({show: true}); this.wordOnClick(word[0])}}>{ word[0] }</span>
+            })
+        )
+    }
+
+    addClozeButton(post) {
+        this.props.addClozeToUser(post)
+        alert("Post added for study!")
+    }
+
+    async wordOnClick(word) {
+        await this.props.newSearchTerm(word)
+        this.props.wordSearch(this.props.searchTerm)
+    }
+
+    renderContentImage(post) {
         if (post.postImageUrl.length == 0) {
             return (
                 <Row className="zhihuContent">
                     <Col sm={1}></Col>
-                    <Col sm={10}><div>{ post.postContent }</div></Col>
+                    <Col sm={10}><div className="postContent">{ this.renderPostWords(post.postTokenizedContent) }</div></Col>
                     <Col sm={1}></Col>
                 </Row>
             )
         } else {
             return (
                 <Row className="zhihuContent">
-                    <Col xs={8}><div>{ post.postContent }</div></Col>
+                    <Col xs={8}><div className="postContent">{ this.renderPostWords(post.postTokenizedContent) }</div></Col>
                     <Col xs={4}><img className="zhihuImage" src={post.postImageUrl} onError={(e)=>{e.target.onerror = null; e.target.src="http://pic.51yuansu.com/pic/cover/00/05/24/5736985738490_610.jpg"}} /></Col>
                 </Row>
             )
@@ -26,7 +55,6 @@ class PostCards extends Component{
     }
 
     renderPosts(post) {
-        console.log(post)
         if (post.postSource == "weibo") {
             return (
                 <div>
@@ -35,12 +63,18 @@ class PostCards extends Component{
                         <Col md={8}>
                             <Card className="postCard">
                                 <div class="card-body">
-                                    <div className="user"><Image className="userImage" roundedCircle fluid src={post.postUserImageUrl} /><span>{post.postUser}</span><i class="fab fa-weibo fa-2x"></i></div>
-                                    <div className="postContent">{ post.postContent }</div>
-                                    <Row className="cardBotom">                                    
-                                            <Col xs={4}><div className="postPopularity">{post.postPopularity}</div></Col>
-                                            <Col xs={4}><Button className="userUrl" href={`https://www.weibo.com/${post.postUserUrl}`} target='_blank'>See User</Button></Col>
-                                            <Col xs={4}><span class="material-icons addCloze">add_circle_outline</span></Col>
+                                    <div className="user">
+                                        <a href={`https://www.weibo.com/${post.postUserUrl}`} target='_blank'>
+                                                <Image className="userImage" roundedCircle fluid src={post.postUserImageUrl} />
+                                                <span>{post.postUser}</span>
+                                        </a>
+                                        <i class="fab fa-weibo fa-2x"></i>
+                                    </div>
+                                    <div className="postContent">{ this.renderPostWords(post.postTokenizedContent) }</div>
+                                    <Row className="cardBotom">     
+                                            <Col xs={4}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
+                                            <Col xs={4}><div className="postLevel">Level: {post.postLevel}</div></Col>                               
+                                            <Col xs={4}><span class="material-icons addCloze" onClick={() => {this.addClozeButton(post)}}>add_circle_outline</span></Col>
                                     </Row>
                                 </div>
                             </Card>
@@ -58,14 +92,45 @@ class PostCards extends Component{
                             <Card className="postCard">
                                 <div class="card-body">
                                     <Row>
-                                        <Col xs={7}></Col>
+                                        <Col xs={7}>
+                                            <a className="postUrl" href={post.postUrl} target='_blank'> 
+                                                Zhihu Question:
+                                            </a>   
+                                        </Col>
                                         <Col xs={5}><div><i class="fab fa-zhihu fa-2x"></i></div></Col>
                                     </Row>
-                                    { this.renderZhihuContent(post)}
+                                    { this.renderContentImage(post)}
                                     <Row className="cardBotom">                                    
-                                        <Col xs={4}><div className="postPopularity">{post.postPopularity}</div></Col>
-                                        <Col xs={4}><Button className="postUrl" href={post.postUrl} target='_blank'>See on Zhihu</Button></Col>
-                                        <Col xs={4}><span class="material-icons addCloze">add_circle_outline</span></Col>
+                                        <Col xs={4}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
+                                        <Col xs={4}><div className="postLevel">Level: {post.postLevel}</div></Col>
+                                        <Col xs={4}><span class="material-icons addCloze" onClick={() => {this.addClozeButton(post)}}>add_circle_outline</span></Col>
+                                    </Row>
+                                </div>
+                            </Card>
+                        </Col>
+                        <Col md={2}></Col>
+                    </Row>
+                </div>
+            )
+        } else if (post.postSource.slice(0,6) == "wangyi" || post.postSource.slice(0,7) == "toutiao") {
+            return (
+                <div>
+                    <Row>
+                        <Col md={2}></Col>
+                        <Col md={8}>
+                            <Card className="postCard">
+                                <div class="card-body">
+                                    <Row>
+                                        <Col xs={7}>
+                                            <a className="postUrl" href={post.postUrl} target='_blank'>News Article:</a>
+                                        </Col>
+                                        <Col xs={5}><div><i class="far fa-newspaper fa-2x"></i></div></Col>
+                                    </Row>
+                                    { this.renderContentImage(post)}
+                                    <Row className="cardBotom">                                    
+                                        <Col xs={4}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
+                                        <Col xs={4}><div className="postLevel">Level: {post.postLevel}</div></Col>
+                                        <Col xs={4}><span class="material-icons addCloze" onClick={() => {this.addClozeButton(post)}}>add_circle_outline</span></Col>
                                     </Row>
                                 </div>
                             </Card>
@@ -79,14 +144,27 @@ class PostCards extends Component{
 
     render() {
         return (
-            this.props.posts.map(post => (this.renderPosts(post)))
+            <div>
+                <Modal
+                className="dictionary-modal"
+                id="dict-modal"
+                size={"s"} 
+                show={this.state.show} 
+                onHide={() => {this.setState({show:false})}}>
+                    <Modal.Body class="dictionary-body">
+                        <DictionaryEntry></DictionaryEntry>
+                    </Modal.Body>
+                </Modal>
+                {this.props.posts.map(post => (this.renderPosts(post)))}
+            </div>
         )
     }
 }
 
 function mapStateToProps(state) {
     return {
-        posts: state.posts
+        posts: state.posts,
+        searchTerm: state.searchTerm
     }
 }
 

@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const Post = require("./models/post")
 const Word = require("./models/word")
 const User = require("./models/user")
+const Dictionary = require("./models/dictionary")
 const cookieSession = require('cookie-session')
 const session = require("express-session")
 const ObjectId = require('mongoose').Types.ObjectId
@@ -15,7 +16,7 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const app = express()
 
-mongoose.connect('mongodb://localhost/weiboClozed')
+mongoose.connect('mongodb://paulStorm:w31b020200403@ds231387.mlab.com:31387/heroku_1xm0ffdd')
 
 app.use(cookieSession({
   name: 'session',
@@ -103,7 +104,6 @@ passport.deserializeUser((user, done) => {
 });
 
 function checkAuthentication(req,res,next){
-  console.log(req.isAuthenticated())
   if(req.isAuthenticated()){
       //req.isAuthenticated() will return true if user is logged in
       next();
@@ -111,6 +111,16 @@ function checkAuthentication(req,res,next){
       res.redirect("/");
   }
 }
+
+app.get("/wordsearch", (req,res) => {
+  Dictionary.find({ simplified: req.query.query}).exec((err, result) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send(result)
+    }
+  })
+})
 
 app.post('/login', passport.authenticate('login', {
   successRedirect: 'http://localhost:3000/posts',
@@ -124,13 +134,36 @@ app.get("/posts", checkAuthentication, (req, res) => {
     if (err) {
       res.send(err)
     } else {
-      Post.find({ postLevel: { $lte: user[0].userLevel }}).sort({dateRetrieved: 1}).skip(startPost).limit(viewNum).exec((err, posts) => {
+      Post.find({ postLevel: { $lte: user[0].userLevel }}).sort({dateRetrieved: -1}).skip(startPost).limit(viewNum).exec((err, posts) => {
         if (err) {
           res.send(err)
         } else {
           res.send(posts)
         }
       })
+    }  
+  })
+})
+
+
+app.get("/user/words", checkAuthentication, (req, res) => {
+  let viewNum = parseInt(req.query.viewNum)
+  let startPost = parseInt(req.query.startPost)
+
+  User.find({userName: req.user.myUser}).exec((err, user) => {
+    if (err) {
+      res.send(err)
+    } else {
+      let words = []
+      if (user[0].userDictionary.length > (startPost + viewNum)) {
+        words = user[0].userDictionary.slice(startPost, viewNum)
+      } else if (user[0].userDictionary.length > startPost) {
+        words = user[0].userDictionary.slice(startPost,)
+      } else {
+        words = user[0].userDictionary
+      }
+
+      res.send(words)
     }  
   })
 })
@@ -143,7 +176,7 @@ app.get("/posts/clozes",  (req, res) => {
     if (err) {
       res.send(err)
     } else {
-      Post.find({ postLevel: { $lte: user[0].userLevel }}).sort({dateRetrieved: 1}).skip(startPost).limit(viewNum).exec((err, posts) => {
+      Post.find({ postLevel: { $lte: user[0].userLevel }}).sort({"dateRetrieved":-1}).skip(startPost).limit(viewNum).exec((err, posts) => {
         Word.find({ level:{ $lte: user[0].userLevel }}).countDocuments().exec((err, wordCount) => {
           let wordStartIndex = Math.floor(Math.random() * (wordCount-(viewNum*3)))
 
@@ -155,14 +188,26 @@ app.get("/posts/clozes",  (req, res) => {
               let clozedPost = []
               let toRemove = Math.floor(Math.random() * post.postWordsPos.length)
               let removedWord = post.postWordsPos[toRemove]
-              let clozedPostContent = post.postContent.replace(removedWord[0], "____") 
+              let clozedPostTokenizedContent = []
+              post.postTokenizedContent.forEach(wordArray => {
+                let clozedTokenizedWord = []
+                if (wordArray[0] == removedWord[0]) {
+                  clozedTokenizedWord.push("[------]")
+                  clozedTokenizedWord.push(wordArray[1])
+                } else {
+                  clozedTokenizedWord.push(wordArray[0])
+                  clozedTokenizedWord.push(wordArray[1])
+                }
+
+                clozedPostTokenizedContent.push(clozedTokenizedWord)
+              })
 
               replacementWords = []
               replacementWords.push(words[count].word)
               replacementWords.push(words[count + 1].word)
               replacementWords.push(words[count + 2].word)
 
-              clozedPost.push(clozedPostContent)
+              clozedPost.push(clozedPostTokenizedContent)
               clozedPost.push(removedWord)
               clozedPost.push(replacementWords)
 
@@ -175,6 +220,73 @@ app.get("/posts/clozes",  (req, res) => {
           })
         })
       })
+    }
+  })
+})
+
+app.get("/user/clozes",  (req, res) => {
+  let viewNum = parseInt(req.query.viewNum)
+  let startPost = parseInt(req.query.startPost)
+
+  User.find({userName: req.user.myUser}).lean().exec((err, user) => {
+    if (err) {
+      res.send(err)
+    } else {
+      if (user[0].userClozes.length > 0) {
+        Word.find({ level:{ $lte: user[0].userLevel }}).countDocuments().exec((err, wordCount) => {
+          let wordStartIndex = Math.floor(Math.random() * (wordCount-(user[0].userClozes.length*3)))
+
+          Word.find({ level:{ $lte: user[0].userLevel }}).limit((user[0].userClozes.length*3)).skip(wordStartIndex).exec((err, words) => {
+            let posts = []
+            if (req.query.view == "incorrect") {
+              posts = user[0].userClozes.filter(cloze => {
+                return cloze.lastAttempt == "incorrect"
+              }) 
+            } else {
+              posts = user[0].userClozes
+            }    
+
+            let clozedPosts = []
+            let count = 0
+            words = shuffle(words)
+            posts.forEach((cloze) => {
+              let clozedPost = []
+              let toRemove = Math.floor(Math.random() * cloze.postWordsPos.length)
+              let removedWord = cloze.postWordsPos[toRemove]
+              let clozedPostTokenizedContent = []
+              cloze.postTokenizedContent.forEach(wordArray => {
+                let clozedTokenizedWord = []
+                if (wordArray[0] == removedWord[0]) {
+                  clozedTokenizedWord.push("[------]")
+                  clozedTokenizedWord.push(wordArray[1])
+                } else {
+                  clozedTokenizedWord.push(wordArray[0])
+                  clozedTokenizedWord.push(wordArray[1])
+                }
+
+                clozedPostTokenizedContent.push(clozedTokenizedWord)
+              })
+
+              replacementWords = []
+              replacementWords.push(words[count].word)
+              replacementWords.push(words[count + 1].word)
+              replacementWords.push(words[count + 2].word)
+
+              clozedPost.push(clozedPostTokenizedContent)
+              clozedPost.push(removedWord)
+              clozedPost.push(replacementWords)
+
+              clozedPosts.push(clozedPost)
+
+              count += 3
+            })
+
+            res.send({posts, clozedPosts})
+          })
+        })
+      } else {
+        res.send({})
+      }  
     }
   })
 })
@@ -198,7 +310,26 @@ app.post("/posts/clozes", (req, res) => {
   })
 })
 
-app.get("/clozes/newCloze", async (req, res) => {
+app.post("/addWordToDict", (req, res) => {
+  let word = req.body
+  User.findOne({userName: req.user.myUser}).exec((err, user) => {
+    if (err) {
+      res.send(err)
+    } else {
+      user.userDictionary.push(word)
+      user.save((err, user) => {
+        if (err) {
+          res.send(err)
+        } else {
+          console.log(user)
+          res.send("Word added to userDictionary")
+        }
+      })
+    }
+  })
+})
+
+app.get("/clozes/newCloze", (req, res) => {
 
   Post.estimatedDocumentCount().exec((err, count) => {
     let startIndex = Math.floor(Math.random() * count)
@@ -222,7 +353,12 @@ app.get("/clozes/newCloze", async (req, res) => {
             let clozedPost = []
             let toRemove = Math.floor(Math.random() * post.postWordsPos.length)
             let removedWord = post.postWordsPos[toRemove]
-            let clozedPostContent = post.postContent.replace(removedWord[0], "____") 
+            let clozedPostContent = post.postTokenizedContent.map(wordArray => {
+              if (wordArray[0] == removedWord) {
+                wordArray[0] = "____"
+              }
+              return wordArray
+            })
 
             replacementWords = []
             replacementWords.push(words[count].word)

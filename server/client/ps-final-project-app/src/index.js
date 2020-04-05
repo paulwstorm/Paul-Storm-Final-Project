@@ -9,6 +9,9 @@ import SelectLevel from "./components/selectLevel.js"
 import Login from "./components/login.js"
 import PostClozes from "./components/postClozes.js"
 import './index.css'
+import UserPage from "./components/userPage"
+import UserClozes from "./components/userClozes"
+import UserWords from "./components/userWords"
 
 import rootReducer from "./reducers/index.js";
 
@@ -23,6 +26,9 @@ ReactDOM.render(
           <Route exact path="/test" component={Login} />
           <Route exact path="/posts" component={Posts} />
           <Route exact path="/posts/clozes" component={PostClozes} />
+          <Route exact path="/user" component={UserPage} />
+          <Route exact path="/user/clozes" component={UserClozes} />
+          <Route exact path="/user/words" component={UserWords} />
         </Switch>
       </div>
     </BrowserRouter>

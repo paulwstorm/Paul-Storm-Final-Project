@@ -2,23 +2,14 @@ import React from 'react';
 import { Component, Link } from 'react'
 import { connect } from "react-redux"
 import { Button, Card, Row, Col } from 'react-bootstrap'
-import './posts.css'
+import './userWords.css'
 import Header from "./header.js"
-import PostCards from "./postCards.js"
+import WordCards from "./wordCards.js"
 import * as actions from "../actions/index.js"
 
-class Posts extends Component{
-    constructor() {
-        super()
-
-        this.state = {
-            viewNum: 10,
-            startPost: 0
-        }
-    }
-
+class UserWords extends Component {
     componentDidMount() {
-        this.props.getPosts(this.props.viewNum, this.props.startPost)
+        this.props.getWords(this.props.viewNum, this.props.startPost)
     }
 
     renderButtons() {
@@ -27,8 +18,8 @@ class Posts extends Component{
                 <Row>
                     <Col xs={1}></Col>
                         <Col xs={10}>
-                            <Button className="posts-less-posts" onClick={event => { this.props.getPosts(this.props.viewNum, (this.props.startPost - 10)); this.props.decrementPostNumber(this.props.viewNum); window.scrollTo(0, 0)}}>Back</Button>
-                            <Button className="posts-more-posts" onClick={event => { this.props.getPosts(this.props.viewNum, (this.props.startPost + 10)); this.props.incrementPostNumber(this.props.viewNum); window.scrollTo(0, 0)}}>Next</Button>
+                            <Button className="words-less-words" onClick={event => { this.props.getWords(this.props.viewNum, (this.props.startPost - 10)); this.props.decrementPostNumber(this.props.viewNum); window.scrollTo(0, 0)}}>Back</Button>
+                            <Button className="words-more-words" onClick={event => { this.props.getWords(this.props.viewNum, (this.props.startPost + 10)); this.props.incrementPostNumber(this.props.viewNum); window.scrollTo(0, 0)}}>Next</Button>
                         </Col>
                     <Col xs={1}></Col>
                 </Row>  
@@ -38,7 +29,7 @@ class Posts extends Component{
                 <Row>
                     <Col xs={2}></Col>
                         <Col xs={8}>
-                            <Button className="posts-more-posts" onClick={event => { this.props.getPosts(this.props.viewNum, (this.props.startPost + 10)); this.props.incrementPostNumber(this.props.viewNum); window.scrollTo(0, 0)}}>Next</Button>                        </Col>
+                            <Button className="words-more-words" onClick={event => { this.props.getWords(this.props.viewNum, (this.props.startPost + 10)); this.props.incrementPostNumber(this.props.viewNum); window.scrollTo(0, 0)}}>Next</Button>                        </Col>
                     <Col xs={2}></Col>
                 </Row>  
             )
@@ -47,7 +38,7 @@ class Posts extends Component{
                 <Row>
                     <Col xs={2}></Col>
                         <Col xs={8}>
-                            <Button className="posts-less-posts" onClick={event => { this.props.getPosts(this.props.viewNum, (this.props.startPost - 10)); this.props.decrementPostNumber(this.prps.viewNum); window.scrollTo(0, 0)}}>Back</Button>
+                            <Button className="words-less-words" onClick={event => { this.props.getWords(this.props.viewNum, (this.props.startPost - 10)); this.props.decrementPostNumber(this.prps.viewNum); window.scrollTo(0, 0)}}>Back</Button>
                         </Col>
                     <Col xs={2}></Col>
                 </Row>  
@@ -56,14 +47,14 @@ class Posts extends Component{
     }
 
     render() {
-        if (this.props.posts.length == 0) {
+        if (this.props.words.length == 0) {
             return (
                 <div>
                     <Header />
                     <Row>
                         <Col xs={4}></Col>
                         <Col xs={4}>
-                            <h2 className="loading">Loading Posts!</h2>
+                            <h2 className="loading">Loading Words!</h2>
                         </Col>
                         <Col xs={4}></Col>
                     </Row>
@@ -75,12 +66,12 @@ class Posts extends Component{
                         <Row>
                             <Col xs={2}></Col>
                                 <Col xs={8}>
-                                    <Button className="posts-read-posts" href="/posts/">Read</Button>
-                                    <Button className="posts-cloze-posts" href="/posts/clozes">Challenge</Button>
+                                    <Button className="words-read-words" href="/user/words">Read</Button>
+                                    <Button className="words-study-words" href="/user/words/study">Study</Button>
                                 </Col>
                             <Col xs={2}></Col>
                         </Row>  
-                        <PostCards />
+                        <WordCards />
                         { this.renderButtons() }
                     </div>
                 )
@@ -90,10 +81,10 @@ class Posts extends Component{
 
 function mapStateToProps(state) {
     return {
-        posts: state.posts,
+        words: state.words,
         viewNum: state.viewNum,
         startPost: state.startPost
     }
 }
 
-export default connect(mapStateToProps, actions)(Posts)
+export default connect(mapStateToProps, actions)(UserWords)

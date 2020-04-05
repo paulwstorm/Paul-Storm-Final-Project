@@ -3,7 +3,7 @@
     margin-top: 15vh;
 }
 
-.posts-clozes-more-posts, .posts-clozes-less-posts {
+.words-more-words, .words-less-words {
     vertical-align: middle;
     text-align: center;
     font-size: 4vh;
@@ -15,7 +15,7 @@
     margin-right: 5%;
 }
 
-.posts-clozes-more-posts:hover, .posts-clozes-less-posts:hover {
+.words-more-words:hover, .words-less-words:hover {
     vertical-align: middle;
     text-align: center;
     font-size: 4vh;
@@ -27,41 +27,21 @@
     margin-right: 5%;
 }
 
-.posts-clozes-cloze-posts {
+.words-read-words:hover, .words-test-words:hover  {
     vertical-align: middle;
     text-align: center;
-    font-size: 4vh;
-    background-color: #FFFF;
-    color: #0084FF;
-    border: solid 1px;
-    margin: 5%;
-}
-
-.posts-clozes-cloze-posts:hover {
-    vertical-align: middle;
-    text-align: center;
-    font-size: 4vh;
+    font-size: 3vh;
     background-color: #0084FF;
     border-style: none;
     border: solid 1px;
     margin: 5%;
 }
 
-.posts-clozes-read-posts:hover {
+.words-read-words, .words-test-words {
     vertical-align: middle;
-    font-size: 4vh;
+    font-size: 3vh;
     background-color: #FFFF;
     color: #0084FF;
-    border: solid 1px;
-    margin: 5%;
-}
-
-.posts-clozes-read-posts {
-    vertical-align: middle;
-    text-align: center;
-    font-size: 4vh;
-    background-color: #0084FF;
-    border-style: none;
     border: solid 1px;
     margin: 5%;
 }

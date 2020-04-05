@@ -1,9 +1,12 @@
 .postCard {
-    margin: 10vh;
+    margin-bottom: 10vh;
+    margin-left: 10vh;
+    margin-right: 10vh;
     border: solid .7vh;
     border-color: #FFA424;
     background-color: #ffff;
     box-shadow: 3px 3px 5px 6px #ccc;
+    font-size: 3.3vh;
 }
 
 .fa-weibo, .fa-zhihu {
@@ -14,7 +17,7 @@
 }
 
 .fa-zhihu {
-    color: #0084FF;
+    color: black;
     display: block;
     clear: both;
 }
@@ -33,13 +36,8 @@
 
 .postContent {
     clear: both;
-    margin-bottom: 1vh;
-    display: block;
-}
-
-.zhihuContent {
-    margin-top: 4vh;
     margin-bottom: 5vh;
+    display: block;
 }
 
 .zhihuImage {
@@ -51,7 +49,7 @@
     margin-top: 2vh;
     border: solid 1px;
     background-color: #FFFF;
-    color: #A052FF;
+    color: #0084FF;
     font-size: 2.8vh;
     padding: .8vh;
     border-radius: .85vh;
@@ -60,7 +58,7 @@
 .userUrl, .postUrl {
     margin-top: 2vh;
     background-color: #FFFF;
-    color: #A052FF;
+    color: #0084FF;
     font-size: 2.8vh;
     padding: .8vh;
     border: solid 1px;
@@ -68,7 +66,7 @@
 
 .userUrl:hover, .postUrl:hover {
     margin-top: 2vh;
-    background-color: #A052FF;
+    background-color: #0084FF;
     border-style: none;
     font-size: 2.8vh;
     padding: .8vh;
@@ -76,8 +74,31 @@
 }
 
 .addCloze {
-    margin-top: 1vh;
-    color:  #A052FF;
+    color:  #0084FF;
     font-size: 7vh;
     margin-bottom: 1vh;
+}
+
+.addCloze:hover {
+    cursor: pointer;
+}
+
+.dictionary-modal {
+    display: block;
+}
+
+.modal-content {
+    border: solid .7vh;
+    border-color: #FFA424;
+}
+
+.postUrl {
+    border: none;
+    float: left;
+}
+
+.postUrl:hover {
+    border: none;
+    background-color: #FFFF;
+    float: left;
 }

@@ -12,7 +12,12 @@ class SelectLevel extends Component{
         <Row>
           <Col xs = {3}></Col>
           <Col xs = {6}>
-            <h3 className="selectLevelTitle">Please Select Your Level:</h3>
+            <p className="selectLevelTitle">Welcome 欢迎光临!</p>
+            <div className="intro-paragraph">
+              <span>To begin reading posts, please select the level that corresponds to your </span>
+              <a className="HSK-link" href="https://en.wikipedia.org/wiki/Hanyu_Shuiping_Kaoshi" target="_blank"> HSK </a>
+              <span> level and we'll provide content appropriate for you!</span>
+            </div> 
           </Col>
           <Col xs = {3}></Col>
         </Row>
