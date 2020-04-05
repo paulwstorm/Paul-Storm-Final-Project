@@ -87,6 +87,7 @@ passport.use('login', new LocalStrategy ((username, password, done) => {
   dateCreated = date
 
   user.save()
+  const authenticated = username === "username" && password === "password";
 
   if (authenticated) {
     return done(null, { myUser:userName, myID: 1234 });
