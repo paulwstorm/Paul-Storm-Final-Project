@@ -24,7 +24,6 @@ ReactDOM.render(
       <div>
         <Switch>
           <Route exact path="/" component={SelectLevel} />
-<<<<<<< HEAD
           <Route exact path="/test" component={Login} />
           <Route exact path="/posts" component={Posts} />
           <Route exact path="/posts/clozes" component={PostClozes} />
@@ -32,8 +31,6 @@ ReactDOM.render(
           <Route exact path="/user/clozes" component={UserClozes} />
           <Route exact path="/user/words" component={UserWords} />
           <Route exact path="/user/words/study" component={UserWordsStudy} />
-=======
->>>>>>> 2088062ec3c456f3afe16a08afdc9cbf848094bc
         </Switch>
       </div>
     </BrowserRouter>

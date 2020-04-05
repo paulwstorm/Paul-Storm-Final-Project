@@ -8,7 +8,6 @@ class SelectLevel extends Component{
   render() {
     return (
       <div>
-<<<<<<< HEAD
        <Header />        
         <Row>
           <Col xs = {3}></Col>
@@ -94,22 +93,6 @@ class SelectLevel extends Component{
           </Col>
           <Col xs = {4}></Col>
         </Row>
-=======
-          <div>Please Select Your Level:</div>
-                  <form action="http://localhost:5005/login" method="post">
-          <div>
-            <label>Username:</label>
-            <input type="text" name="username" value="username"/>
-          </div>
-          <div>
-            <label>Password:</label>
-            <input type="password" name="password" value="password"/>
-          </div>
-          <div>
-            <input type="submit" value="Log In"/>
-          </div>
-        </form>
->>>>>>> 2088062ec3c456f3afe16a08afdc9cbf848094bc
       </div>
     )
   }
