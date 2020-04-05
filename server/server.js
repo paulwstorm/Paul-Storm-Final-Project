@@ -390,6 +390,6 @@ app.get("/test", checkAuthentication, (req, res) => {
   res.send("Success")
 })
 
-app.listen(5005, () => {
-    console.log("Server listening on port 5005")
-})
+// app.listen(5005, () => {
+//     console.log("Server listening on port 5005")
+// })
