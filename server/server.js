@@ -70,6 +70,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 passport.use('login', new LocalStrategy ((username, password, done) => {
+<<<<<<< HEAD
   const authenticated = (username === "1" || username === "2" || username === "3" || username === "4" || username === "5" || username === "6") && password === "password";
 
   let user = new User()
@@ -87,6 +88,9 @@ passport.use('login', new LocalStrategy ((username, password, done) => {
   dateCreated = date
 
   user.save()
+=======
+  const authenticated = username === "username" && password === "password";
+>>>>>>> 2088062ec3c456f3afe16a08afdc9cbf848094bc
 
   if (authenticated) {
     return done(null, { myUser:userName, myID: 1234 });
@@ -125,8 +129,14 @@ app.get("/wordsearch", (req,res) => {
 })
 
 app.post('/login', passport.authenticate('login', {
+<<<<<<< HEAD
   successRedirect: 'http://localhost:3000/posts',
   failureRedirect: 'http://localhost:3000/'
+=======
+  successRedirect: 'http://localhost:3000/selectLevel',
+  failureRedirect: 'http://localhost:3000/login',
+  session: false
+>>>>>>> 2088062ec3c456f3afe16a08afdc9cbf848094bc
 }));
 
 app.get("/posts", checkAuthentication, (req, res) => {
