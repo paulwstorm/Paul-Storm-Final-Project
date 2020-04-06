@@ -12,29 +12,33 @@ class PostClozeCards extends Component{
         super()
 
         this.state = {
-            show: false,
+            showDict: false,
+            showIncorrect: false,
+            showCorrect: false,
+            guessedCloze: {},
             searchTerm: ""
         }
 
         this.wordOnClick = this.wordOnClick.bind(this)
     }
 
-    checkCorrect(guessed, answer, cloze) {
+    async checkCorrect(guessed, answer, cloze) {
         if (guessed == answer) {
-            alert("宝贝很棒哦！\n Correct!")
             let mark="correct"
             this.props.markClozeCorrect(mark, cloze, this.props.clozes)
+            this.setState({showCorrect: true})
+            setTimeout(() => {this.setState({showCorrect: false})}, 1000)
         } else {
-            alert("哎呀！宝贝要加油啊！\n Incorrect!")
             let mark="incorrect"
             this.props.markClozeCorrect(mark, cloze, this.props.clozes)
+            await this.setState({guessedCloze: cloze}, this.setState({showIncorrect: true}))
         }
     }
 
     renderPostWords(postContent) {
         return (
             postContent.map(word => {
-                return <span onClick={() => {this.setState({show: true}); this.wordOnClick(word[0])}}>{ word[0] }</span>
+                return <span onClick={() => {this.setState({showDict: true}); this.wordOnClick(word[0])}}>{ word[0] }</span>
             })
         )
     }
@@ -63,6 +67,28 @@ class PostClozeCards extends Component{
         }
     }
 
+    showGuessedCloze() {
+        console.log("this.state", this.state)
+        return (
+            <div className="show-incorrect">
+                <div>The correct answer is</div>
+                <div>{this.state.guessedCloze.removedWord}</div>
+                <br/>
+                <div>Full post: </div>
+                <div>{this.state.guessedCloze.postContent}</div>
+            </div>
+        )
+    }
+
+    showCorrect() {
+        return (
+            <div>
+                <i class="fas fa-check fa10x"></i>
+                <div>Correct!</div>
+            </div>
+        )
+    }
+
     renderPosts(post) {
         if (post.postSource == "weibo") {
             return (
@@ -72,15 +98,22 @@ class PostClozeCards extends Component{
                         <Col md={8}>
                             <Card className="postCard">
                                 <div class="card-body">
-                                    <Row>
-                                        <Col xs={7}>
-                                            <a href={`https://www.weibo.com/${post.postUserUrl}`} target='_blank'>
-                                                <Image className="userImage" roundedCircle fluid src={post.postUserImageUrl} />
-                                                <span>{post.postUser}</span>
-                                            </a>
+                                    <Row className="card-top">
+                                        <Col s={7}>
+                                            <div className="user">
+                                                <a href={`https://www.weibo.com/${post.postUserUrl}`} target='_blank'>
+                                                        <Image className="userImage" roundedCircle fluid src={post.postUserImageUrl} />
+                                                        <span>{post.postUser}</span>
+                                                </a>
+                                            </div>
                                         </Col>
-                                        <Col xs={5}><div><i class="fab fa-zhihu fa-2x"></i></div></Col>
-                                    </Row>                                    <div className="postContent">{ this.renderPostWords(post.postClozedTokenizedContent) }</div>
+                                        <Col s={2}><div className="post-level">Level {post.postLevel}</div></Col>
+                                        <Col s={3} className="source-icon">
+                                            <span className="source">Source</span>
+                                            <i class="fab fa-weibo fa-1x"></i>
+                                        </Col>
+                                    </Row>                                 
+                                    <div className="postContent">{ this.renderPostWords(post.postClozedTokenizedContent) }</div>
                                     <Row className="multipleChoiceTop">     
                                         <Col xs={2}></Col>
                                         <Col xs={4}>
@@ -116,13 +149,17 @@ class PostClozeCards extends Component{
                         <Col md={8}>
                             <Card className="postCard">
                                 <div class="card-body">
-                                    <Row>
-                                        <Col xs={7}>
+                                    <Row className="card-top">
+                                        <Col s={7}>
                                             <a className="postUrl" href={post.postUrl} target='_blank'> 
                                                 Zhihu Question:
                                             </a>   
+                                         </Col>
+                                        <Col s={2}><div className="post-level">Level {post.postLevel}</div></Col>
+                                        <Col s={3} className="source-icon">
+                                            <span className="source">Source</span>
+                                            <i class="fab fa-zhihu fa-1x"></i>
                                         </Col>
-                                        <Col xs={5}><div><i class="fab fa-zhihu fa-2x"></i></div></Col>
                                     </Row>
                                     { this.renderContentImage(post)}
                                     <Row className="multipleChoiceTop">     
@@ -160,11 +197,17 @@ class PostClozeCards extends Component{
                         <Col md={8}>
                             <Card className="postCard">
                                 <div class="card-body">
-                                    <Row>
-                                        <Col xs={7}>
-                                            <a className="postUrl" href={post.postUrl} target='_blank'>News Article:</a>
+                                    <Row className="card-top">
+                                        <Col s={7}>
+                                            <a className="postUrl" href={post.postUrl} target='_blank'> 
+                                                News Article:
+                                            </a>   
+                                         </Col>
+                                        <Col s={2}><div className="post-level">Level {post.postLevel}</div></Col>
+                                        <Col s={3} className="source-icon">
+                                            <span className="source">Source</span>
+                                            <i class="fab fa-zhihu fa-1x"></i>
                                         </Col>
-                                        <Col xs={5}><div><i class="far fa-newspaper fa-2x"></i></div></Col>
                                     </Row>
                                     { this.renderContentImage(post)}
                                     <Row className="multipleChoiceTop">     
@@ -204,10 +247,30 @@ class PostClozeCards extends Component{
                 className="dictionary-modal"
                 id="dict-modal"
                 size={"s"} 
-                show={this.state.show} 
-                onHide={() => {this.setState({show:false})}}>
+                show={this.state.showDict} 
+                onHide={() => {this.setState({showDict:false})}}>
                     <Modal.Body class="dictionary-body">
                         <DictionaryEntry></DictionaryEntry>
+                    </Modal.Body>
+                </Modal>
+                <Modal
+                className="cloze-modal"
+                id="cloze-modal"
+                size={"s"} 
+                show={this.state.showIncorrect} 
+                onHide={() => {this.setState({showIncorrect:false})}}>
+                    <Modal.Body class="show-incorrect-body">
+                        {this.showGuessedCloze()}
+                    </Modal.Body>
+                </Modal>
+                <Modal
+                className="correct-modal"
+                id="correct-modal"
+                size={"s"} 
+                show={this.state.showCorrect} 
+                onHide={() => {this.setState({showCorrect:false})}}>
+                    <Modal.Body class="show-incorrect-body">
+                        {this.showCorrect()}
                     </Modal.Body>
                 </Modal>
                 {this.props.clozes.map(post => (this.renderPosts(post)))}

@@ -16,15 +16,20 @@
     padding-bottom: .5rem;
 }
 
-.postLevel {
+.post-level {
     font-size: 2.4vh;
+    float: right;
 }
 
 .fa-weibo, .fa-zhihu {
+    font-size: 5vh;
     margin-right: 5vh;
     margin-top: 1vh;
-    text-align: right;
     float: right;
+}
+
+.user {
+    font-size: 2.8vh;
 }
 
 .fa-zhihu {
@@ -33,17 +38,21 @@
     clear: both;
 }
 
-.source {
-    margin-right: 1.3vh;
-    margin-top: 15%;
-    vertical-align: middle;
+.source-icon {
+   float: right;
+   vertical-align: text-top;
 }
 
-.user {
+.source {
+    font-size: 2.4vh;
+    margin-right: 1.3vh;
+    vertical-align: top;
+
+}
+
+.card-body {
     margin-bottom: 4vh;
     margin-top: 2vh;
-    text-align: left;
-    vertical-align: middle;
 }
 
 .userImage {
@@ -73,7 +82,6 @@
 }
 
 .userUrl, .postUrl {
-    margin-top: 2vh;
     background-color: #FFFF;
     color: #0084FF;
     font-size: 2.8vh;
@@ -92,8 +100,12 @@
 
 .addCloze {
     color:  #0084FF;
-    font-size: 7vh;
+    font-size: 3vh;
     margin-bottom: 1vh;
+}
+
+.postDate {
+    font-size: 3vh;
 }
 
 .addCloze:hover {
