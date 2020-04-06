@@ -7,6 +7,7 @@ const UserSchema = new Schema({
     userLevel: Number,
     userClozes: Array,
     userDictionary: Array,
+    visited: Array,
     dateCreated: Date
 })
 

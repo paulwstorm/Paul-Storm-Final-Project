@@ -6,6 +6,7 @@ import ClozeReducer from "./clozeReducer"
 import SearchResultReducer from "./searchResultReducer"
 import SearchTermReducer from "./searchTermReducer"
 import WordReducer from "./wordReducer"
+import UserReducer from "./userReducer"
 
 const rootReducer = combineReducers({
     posts: PostsReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
     viewNum: ViewNumReducer,
     searchTerm: SearchTermReducer,
     searchResult: SearchResultReducer,
-    words: WordReducer
+    words: WordReducer,
+    user: UserReducer
 })
 
 export default rootReducer

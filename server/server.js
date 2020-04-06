@@ -84,6 +84,7 @@ passport.use('login', new LocalStrategy ((username, password, done) => {
   user.userLevel = parseInt(username),
   user.userClozes = []
   user.userDictionary = [],
+  user.visited = [],
   dateCreated = date
 
   user.save()
@@ -120,6 +121,33 @@ app.get("/wordsearch", (req,res) => {
       res.send(err)
     } else {
       res.send(result)
+    }
+  })
+})
+
+app.get("/userinfo", (req, res) => {
+  User.find({userName: req.user.myUser}).exec((err, user) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send(user[0])
+    }
+  })
+})
+
+app.post("/userinfo", (req, res) => {
+  User.find({userName: req.user.myUser}).exec((err, user) => {
+    if (err) {
+      res.send(err)
+    } else {
+      user[0].visited.push(req.body.room)
+      user[0].save((err, user) => {
+        if (err) {
+          res.send(err)
+        } else {
+          res.send(user[0])
+        }
+      })
     }
   })
 })

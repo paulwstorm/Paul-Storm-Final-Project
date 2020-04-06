@@ -12,6 +12,26 @@ export const WORD_SEARCH = "word_search"
 export const NEW_SEARCH_TERM = "new_search_term"
 export const GET_USER_CLOZES = "get_users_clozes"
 export const GET_WORDS = "get_words"
+export const GET_USER = "get_user"
+
+export function getUser() {
+    const user = axios.get(`${ROOT_URL}/userinfo`, {withCredentials: true})
+
+    return {
+        type: GET_USER,
+        payload: user
+    }
+}
+
+export function addRoomToUser(room) {
+    const roomToSend = {room:room}
+    const user = axios.post(`${ROOT_URL}/userinfo`, roomToSend, {withCredentials: true})
+
+    return {
+        type: GET_USER,
+        payload: user
+    }
+}
 
 export function getPosts(viewNum, startPost) {
     const posts = axios.get(`${ROOT_URL}/posts?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
