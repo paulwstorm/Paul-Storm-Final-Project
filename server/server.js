@@ -18,6 +18,9 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const app = express()
 
+console.log(process.env.MONGODB_URI)
+
+
 // mongoose.connect('mongodb://localhost/weiboClozed')
 // mongoose.connect('mongodb://paulStorm:w31b020200403@ds231387.mlab.com:31387/heroku_1xm0ffdd')
 
@@ -89,7 +92,6 @@ passport.use('login', new LocalStrategy ((username, password, done) => {
   dateCreated = date
 
   user.save()
-  const authenticated = username === "username" && password === "password";
 
   if (authenticated) {
     return done(null, { myUser:userName, myID: 1234 });
