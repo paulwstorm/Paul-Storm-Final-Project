@@ -9,7 +9,7 @@ const querySring = require('querystring')
 
 const app = express()
 
-mongoose.connect('mongodb://localhost/homebase')
+// mongoose.connect('mongodb://localhost/homebase')
 
 
 app.use(bodyParser.json())
