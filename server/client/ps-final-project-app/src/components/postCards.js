@@ -64,18 +64,27 @@ class PostCards extends Component{
                         <Col md={8}>
                             <Card className="postCard">
                                 <div class="card-body">
-                                    <div className="user">
-                                        <a href={`https://www.weibo.com/${post.postUserUrl}`} target='_blank'>
-                                                <Image className="userImage" roundedCircle fluid src={post.postUserImageUrl} />
-                                                <span>{post.postUser}</span>
-                                        </a>
-                                        <i class="fab fa-weibo fa-2x"></i>
-                                    </div>
+                                    <Row>
+                                        <Col md={7}>
+                                            <div className="user">
+                                                <a href={`https://www.weibo.com/${post.postUserUrl}`} target='_blank'>
+                                                        <Image className="userImage" roundedCircle fluid src={post.postUserImageUrl} />
+                                                        <span>{post.postUser}</span>
+                                                </a>
+                                            </div>
+                                        </Col>
+                                        <Col md={2}><div className="postLevel">Level: {post.postLevel}</div></Col>
+                                        <Col md={3}>
+                                            <div className="source-icon">
+                                                <span className="source">source:</span>
+                                                <i class="fab fa-weibo fa-2x"></i>
+                                            </div>
+                                        </Col>
+                                    </Row>
                                     <div className="postContent">{ this.renderPostWords(post.postTokenizedContent) }</div>
                                     <Row className="cardBotom">     
-                                            <Col xs={4}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
-                                            <Col xs={4}><div className="postLevel">Level: {post.postLevel}</div></Col>                               
-                                            <Col xs={4}><span class="material-icons addCloze" onClick={() => {this.addClozeButton(post)}}>add_circle_outline</span></Col>
+                                            <Col xs={6}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
+                                            <Col xs={6}><span class="material-icons addCloze" onClick={() => {this.addClozeButton(post)}}>add_circle_outline</span></Col>
                                     </Row>
                                 </div>
                             </Card>
@@ -93,18 +102,25 @@ class PostCards extends Component{
                             <Card className="postCard">
                                 <div class="card-body">
                                     <Row>
-                                        <Col xs={7}>
+                                        <Col xs={5}>
                                             <a className="postUrl" href={post.postUrl} target='_blank'> 
                                                 Zhihu Question:
                                             </a>   
                                         </Col>
-                                        <Col xs={5}><div><i class="fab fa-zhihu fa-2x"></i></div></Col>
+                                        <Col xs={7}>
+                                            <div>
+                                                <span className="postLevel">Level: {post.postLevel}</span>
+                                                <span className="source-icon">
+                                                    <span className="source">source:</span>
+                                                    <i class="fab fa-zhihu fa-2x"></i>
+                                                </span>
+                                            </div>
+                                        </Col>
                                     </Row>
                                     { this.renderContentImage(post)}
                                     <Row className="cardBotom">                                    
-                                        <Col xs={4}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
-                                        <Col xs={4}><div className="postLevel">Level: {post.postLevel}</div></Col>
-                                        <Col xs={4}><span class="material-icons addCloze" onClick={() => {this.addClozeButton(post)}}>add_circle_outline</span></Col>
+                                        <Col xs={6}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
+                                        <Col xs={6}><span class="material-icons addCloze" onClick={() => {this.addClozeButton(post)}}>add_circle_outline</span></Col>
                                     </Row>
                                 </div>
                             </Card>
@@ -125,15 +141,22 @@ class PostCards extends Component{
                                         <Col xs={7}>
                                             <a className="postUrl" href={post.postUrl} target='_blank'>News Article:</a>
                                         </Col>
-                                        <Col xs={5}><div><i class="far fa-newspaper fa-2x"></i></div></Col>
+                                        <Col xs={5}>
+                                            <div>
+                                                <span className="postLevel">Level: {post.postLevel}</span>
+                                                <span className="source-icon">
+                                                    <span className="source">source:</span>
+                                                    <i class="far fa-newspaper fa-2x"></i>
+                                                </span>
+                                            </div>
+                                        </Col>
                                     </Row>
                                         <div className="postContent">
                                             { this.renderContentImage(post)}
                                         </div>
                                     <Row className="cardBotom">                                    
-                                        <Col xs={4}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
-                                        <Col xs={4}><div className="postLevel">Level: {post.postLevel}</div></Col>
-                                        <Col xs={4}><span class="material-icons addCloze" onClick={() => {this.addClozeButton(post)}}>add_circle_outline</span></Col>
+                                        <Col xs={6}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
+                                        <Col xs={6}><span class="material-icons addCloze" onClick={() => {this.addClozeButton(post)}}>add_circle_outline</span></Col>
                                     </Row>
                                 </div>
                             </Card>

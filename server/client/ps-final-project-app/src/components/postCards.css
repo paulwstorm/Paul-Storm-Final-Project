@@ -16,6 +16,10 @@
     padding-bottom: .5rem;
 }
 
+.postLevel {
+    font-size: 2.4vh;
+}
+
 .fa-weibo, .fa-zhihu {
     margin-right: 5vh;
     margin-top: 1vh;
@@ -29,11 +33,17 @@
     clear: both;
 }
 
+.source {
+    margin-right: 1.3vh;
+    margin-top: 15%;
+    vertical-align: middle;
+}
+
 .user {
     margin-bottom: 4vh;
-    margin-left: 5vh;
     margin-top: 2vh;
     text-align: left;
+    vertical-align: middle;
 }
 
 .userImage {
@@ -49,6 +59,7 @@
 
 .zhihuImage {
     max-width: 40%;
+    margin: 3vh;
 }
 
 .postPopularity {

@@ -11,6 +11,16 @@
     color: #0084FF;
 }
 
+.dictionary-top {
+    text-align: center;
+}
+
+.dictionary-title {
+    text-align: center;
+    margin-top: 2vh;
+    margin-left: 5%;
+}
+
 .add-word {
     cursor: pointer;
 }
@@ -23,6 +33,10 @@
 
 .pinyin, .entry-POS {
     font-size: .5em;
+}
+
+.english-definition {
+    font-size: .75em;
 }
 
 .search-bar {

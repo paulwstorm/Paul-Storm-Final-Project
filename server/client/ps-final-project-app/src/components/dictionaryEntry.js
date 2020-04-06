@@ -22,7 +22,8 @@ class DictionaryEntry extends Component{
         if (this.props.word.length == 0 ) {
             return (
                 <div>
-                    <Row>
+                    <Row className="dictionary-top">
+                        <h4 className="dictionary-title">Search the Dictionary:</h4>
                         <span>
                             <form className="input-group search-bar">
                                 <input
@@ -38,7 +39,8 @@ class DictionaryEntry extends Component{
         } else {
             return (
                 <div>
-                    <Row>
+                    <Row className="dictionary-top">
+                        <h4 className="dictionary-title">Search the Dictionary:</h4>
                         <span>
                             <form className="input-group search-bar">
                                 <input
@@ -57,8 +59,8 @@ class DictionaryEntry extends Component{
                                     <Col s={12}>
                                         <div className="simplified-traditional">
                                             <span className= "entry-num">{entryNum}.</span>
-                                            <span className="simplified-char">{entry.simplified}</span>
-                                            <span className="traditional-char">({entry.traditional})</span>
+                                            <span className="simplified-char">Character: {entry.simplified}</span>
+                                            {/* <span className="traditional-char">({entry.traditional})</span> */}
                                             <span class="material-icons add-word" onClick={() => {this.onEntryClick(entry)}}>add_circle_outline</span>
                                         </div>
                                     </Col>
@@ -66,15 +68,17 @@ class DictionaryEntry extends Component{
                                 <Row>
                                     <Col s={12}>
                                         <div className="pinyin">
-                                            {entry.pinyin}
+                                        Pronunciation: {entry.pinyin}
                                         </div>
-                                        <div className="entry-POS">{entry.partOfSpeech}</div>
+                                        <div className="entry-POS">
+                                            Part of Speech: {entry.partOfSpeech}
+                                        </div>
                                     </Col>
                                 </Row>
                                 <Row>
                                     <Col s={12}>
                                         <div className="english-definition">
-                                            {entry.english}
+                                            Definition: {entry.english}
                                         </div>
                                     </Col>
                                 </Row>

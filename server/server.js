@@ -302,7 +302,12 @@ app.post("/posts/clozes", (req, res) => {
     if (err) {
       res.send(err)
     } else {
-      user.userClozes.push(markedCloze)
+      updatedUserClozes = []
+      updatedUserClozes = user.userClozes.filter(cloze => {
+        return !(cloze.postContent == markedCloze.postContent)
+      })
+      updatedUserClozes.push(markedCloze)
+      user.userClozes = updatedUserClozes
       user.save((err) => {
         if (err) {
           res.send(err)
