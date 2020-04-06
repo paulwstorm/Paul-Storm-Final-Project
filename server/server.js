@@ -130,8 +130,8 @@ app.get("/wordsearch", (req,res) => {
 })
 
 app.post('/login', passport.authenticate('login', {
-  successRedirect: 'http://localhost:3000/posts',
-  failureRedirect: 'http://localhost:3000/'
+  successRedirect: '/posts',
+  failureRedirect: '/'
 }));
 
 app.get("/posts", checkAuthentication, (req, res) => {
