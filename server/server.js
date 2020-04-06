@@ -12,6 +12,8 @@ const session = require("express-session")
 const ObjectId = require('mongoose').Types.ObjectId
 const querySring = require('querystring')
 
+const port = process.env.PORT || 5005;
+
 const LocalStrategy = require('passport-local').Strategy;
 
 const app = express()
@@ -390,6 +392,6 @@ app.get("/test", checkAuthentication, (req, res) => {
   res.send("Success")
 })
 
-// app.listen(5005, () => {
-//     console.log("Server listening on port 5005")
-// })
+app.listen(port, () => {
+    console.log("Server listening on port 5005")
+})

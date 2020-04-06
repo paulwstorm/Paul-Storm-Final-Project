@@ -35,13 +35,13 @@
 }
 
 .postContent {
-    clear: both;
-    margin-bottom: 5vh;
-    display: block;
+    vertical-align: middle;
+    margin-bottom: 3vh;
 }
 
 .zhihuImage {
-    width: 100%;
+    height: 60%;
+    width: 40%;
     border: solid;
 }
 
