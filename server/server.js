@@ -18,9 +18,6 @@ const LocalStrategy = require('passport-local').Strategy;
 
 const app = express()
 
-console.log(process.env.MONGODB_URI)
-
-
 // mongoose.connect('mongodb://localhost/weiboClozed')
 // mongoose.connect('mongodb://paulStorm:w31b020200403@ds231387.mlab.com:31387/heroku_1xm0ffdd')
 
@@ -395,5 +392,5 @@ app.get("/test", checkAuthentication, (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log("Server listening on port 5005")
+    console.log("Server listening on port", port)
 })
