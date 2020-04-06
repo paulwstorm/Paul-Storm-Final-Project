@@ -5,7 +5,7 @@ body {
 }
 
 .header {
-    background-color: #37FF70;
+    background-color: #00FF37;
     height: 8vh;
 }
 
@@ -18,6 +18,7 @@ body {
 }
 
 .search-icon {
+    margin-top: 1vh;
     color: #595959;
     float: right;
     margin-right: 5%;
@@ -31,6 +32,7 @@ body {
 }
 
 .user-icon {
+    margin-top: 1vh;
     color: #595959;
     float: left;
     margin-left: 5%;

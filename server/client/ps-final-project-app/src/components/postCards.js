@@ -127,7 +127,9 @@ class PostCards extends Component{
                                         </Col>
                                         <Col xs={5}><div><i class="far fa-newspaper fa-2x"></i></div></Col>
                                     </Row>
-                                    { this.renderContentImage(post)}
+                                        <div className="postContent">
+                                            { this.renderContentImage(post)}
+                                        </div>
                                     <Row className="cardBotom">                                    
                                         <Col xs={4}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
                                         <Col xs={4}><div className="postLevel">Level: {post.postLevel}</div></Col>

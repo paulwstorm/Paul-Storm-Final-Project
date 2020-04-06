@@ -1,5 +1,7 @@
 .postCard {
     margin-bottom: 10vh;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
     margin-left: 10vh;
     margin-right: 10vh;
     border: solid .7vh;
@@ -7,6 +9,11 @@
     background-color: #ffff;
     box-shadow: 3px 3px 5px 6px #ccc;
     font-size: 3.3vh;
+}
+
+.card-body {
+    padding: 0;
+    padding-bottom: .5rem;
 }
 
 .fa-weibo, .fa-zhihu {
@@ -37,12 +44,11 @@
 .postContent {
     vertical-align: middle;
     margin-bottom: 3vh;
+    margin-top: 3vh;
 }
 
 .zhihuImage {
-    height: 60%;
-    width: 40%;
-    border: solid;
+    max-width: 40%;
 }
 
 .postPopularity {
