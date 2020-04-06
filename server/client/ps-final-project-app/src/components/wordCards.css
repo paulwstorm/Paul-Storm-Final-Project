@@ -9,3 +9,28 @@
     font-size: 3.3vh;
     padding: 3vh;
 }
+
+.entry {
+    margin-bottom: 10%;
+}
+
+.word-simplified-char, .word-traditional-char {
+    margin-left: 3%;
+    margin-bottom: 1%;
+}
+
+.word-pinyin, .word-POS {
+    font-size: .8em;
+}
+
+.word-english-definition {
+    font-size: 3.3vh;;
+    margin-top: 2.5%;
+}
+
+.search-bar {
+    margin-top: 5%;
+    margin-bottom: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+}

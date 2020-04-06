@@ -86,6 +86,7 @@ passport.use('login', new LocalStrategy ((username, password, done) => {
   user.userLevel = parseInt(username),
   user.userClozes = []
   user.userDictionary = [],
+  user.visited = [],
   dateCreated = date
 
   user.save()
@@ -122,6 +123,33 @@ app.get("/wordsearch", (req,res) => {
       res.send(err)
     } else {
       res.send(result)
+    }
+  })
+})
+
+app.get("/userinfo", (req, res) => {
+  User.find({userName: req.user.myUser}).exec((err, user) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send(user[0])
+    }
+  })
+})
+
+app.post("/userinfo", (req, res) => {
+  User.find({userName: req.user.myUser}).exec((err, user) => {
+    if (err) {
+      res.send(err)
+    } else {
+      user[0].visited.push(req.body.room)
+      user[0].save((err, user) => {
+        if (err) {
+          res.send(err)
+        } else {
+          res.send(user[0])
+        }
+      })
     }
   })
 })
@@ -304,7 +332,12 @@ app.post("/posts/clozes", (req, res) => {
     if (err) {
       res.send(err)
     } else {
-      user.userClozes.push(markedCloze)
+      updatedUserClozes = []
+      updatedUserClozes = user.userClozes.filter(cloze => {
+        return !(cloze.postContent == markedCloze.postContent)
+      })
+      updatedUserClozes.push(markedCloze)
+      user.userClozes = updatedUserClozes
       user.save((err) => {
         if (err) {
           res.send(err)

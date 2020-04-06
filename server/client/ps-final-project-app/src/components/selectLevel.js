@@ -15,7 +15,7 @@ class SelectLevel extends Component{
             <p className="selectLevelTitle">Welcome 欢迎光临!</p>
             <div className="intro-paragraph">
               <span>To begin reading posts, please select the level that corresponds to your </span>
-              <a className="HSK-link" href="https://en.wikipedia.org/wiki/Hanyu_Shuiping_Kaoshi" target="_blank"> HSK </a>
+              <a className="HSK-link" href="https://en.wikipedia.org/wiki/Hanyu_Shuiping_Kaoshi" target="_blank">HSK</a>
               <span> level and we'll provide content appropriate for you!</span>
             </div> 
           </Col>

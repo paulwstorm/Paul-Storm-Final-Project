@@ -68,6 +68,14 @@ class UserClozes extends Component{
                 <div>
                     <Header />
                     <Row>
+                        <Col xs={2}></Col>
+                            <Col xs={8}>
+                                <Button className={this.state.incorrectButton} onClick={() => {this.handleToggleClick("incorrect"); this.setState({allButton: "button-off"}); this.setState({incorrectButton: "button-on"})}}>Incorrect</Button>
+                                <Button className={this.state.allButton} onClick={() => {this.handleToggleClick("all"); this.setState({incorrectButton: "button-off"}); this.setState({allButton: "button-on"})}}>All</Button>
+                            </Col>
+                        <Col xs={2}></Col>
+                    </Row>  
+                    <Row>
                         <Col xs={4}></Col>
                         <Col xs={4}>
                             <h2 className="loading">See your saved posts here!</h2>

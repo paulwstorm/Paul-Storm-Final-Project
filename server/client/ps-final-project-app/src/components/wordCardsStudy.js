@@ -47,27 +47,29 @@ class WordCards extends Component{
                 show={this.state.show} 
                 onHide={() => {this.setState({show:false})}}>
                     <Modal.Body class="word-body">
-                        <div>
+                        <div className="word-back-card">
                             <Row>
                                 <Col s={12}>
                                     <div className="simplified-traditional">
-                                        <span className="simplified-char">{this.state.wordBack.simplified}</span>
-                                        <span className="traditional-char">({this.state.wordBack.traditional})</span>
+                                        <span className="word-simplified-char">Character: {this.state.wordBack.simplified}</span>
+                                        <span className="traditional-char">  ({this.state.wordBack.traditional})</span>
                                     </div>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col s={12}>
-                                    <div className="pinyin">
-                                        {this.state.wordBack.pinyin}
+                                    <div className="word-pinyin">
+                                    Pronunciation: {this.state.wordBack.pinyin}
                                     </div>
-                                    <div className="entry-POS">{this.state.wordBack.partOfSpeech}</div>
+                                    <div className="word-POS">
+                                        Part of Speech: {this.state.wordBack.partOfSpeech}
+                                    </div>
                                 </Col>
                             </Row>
                             <Row>
                                 <Col s={12}>
-                                    <div className="english-definition">
-                                        {this.state.wordBack.english}
+                                    <div className="word-english-definition">
+                                        Definition: {this.state.wordBack.english}
                                     </div>
                                 </Col>
                             </Row>

@@ -1,11 +1,32 @@
 .postCard {
     margin-bottom: 10vh;
     margin-left: 10vh;
-    margin-right: 10vh;    
+    margin-right: 10vh; 
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;   
     border: solid .7vh;
     border-color: #FFA424;
     background-color: #ffff;
     box-shadow: 3px 3px 5px 6px #ccc;
+}
+
+.cloze-modal {
+    margin-top: 10%;
+    font-size: 5vh;
+    padding: 5vh;
+}
+
+.show-incorrect {
+    font-size: 3.3vh;
+    margin: 5vh;
+}
+
+.correct-modal {
+    margin-top: 15%;
+}
+
+.fa-check {
+    color: #00FF37;
 }
 
 .fa-weibo, .fa-zhihu {
@@ -21,32 +42,25 @@
     clear: both;
 }
 
-.user {
-    margin-bottom: 4vh;
-    margin-left: 5vh;
-    margin-top: 2vh;
-    text-align: left;
-}
-
 .userImage {
     margin: 1vh;
     border: solid;
 }
 
 .postContent {
-    clear: both;
-    margin-bottom: 5vh;
-    display: block;
+    vertical-align: middle;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
 }
 
 .zhihuContent {
-    margin-top: 4vh;
-    margin-bottom: 5vh;
+    height: 30%;
 }
 
+
 .zhihuImage {
-    width: 100%;
-    border: solid;
+    max-width: 40%;
+    margin: 3vh;
 }
 
 .multiple-choice {

@@ -21,32 +21,24 @@
     clear: both;
 }
 
-.user {
-    margin-bottom: 4vh;
-    margin-left: 5vh;
-    margin-top: 2vh;
-    text-align: left;
-}
-
 .userImage {
     margin: 1vh;
     border: solid;
 }
 
 .postContent {
-    clear: both;
-    margin-bottom: 5vh;
-    display: block;
+    vertical-align: middle;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
 }
 
 .zhihuContent {
-    margin-top: 4vh;
-    margin-bottom: 5vh;
+    height: 30%;
 }
 
 .zhihuImage {
-    width: 100%;
-    border: solid;
+    max-width: 40%;
+    margin: 3vh;
 }
 
 .multiple-choice {

@@ -7,8 +7,6 @@
     background-color: #0084FF;
     border-style: none;
     border: solid 1px;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 
 .level-button:hover {
@@ -16,8 +14,6 @@
     background-color: #FFFF;
     color: #0084FF;
     border: solid 1px;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 
 .intro-paragraph {

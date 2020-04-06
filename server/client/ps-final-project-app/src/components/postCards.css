@@ -1,5 +1,7 @@
 .postCard {
     margin-bottom: 10vh;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
     margin-left: 10vh;
     margin-right: 10vh;
     border: solid .7vh;
@@ -9,11 +11,25 @@
     font-size: 3.3vh;
 }
 
+.card-body {
+    padding: 0;
+    padding-bottom: .5rem;
+}
+
+.post-level {
+    font-size: 2.4vh;
+    float: right;
+}
+
 .fa-weibo, .fa-zhihu {
+    font-size: 5vh;
     margin-right: 5vh;
     margin-top: 1vh;
-    text-align: right;
     float: right;
+}
+
+.user {
+    font-size: 2.8vh;
 }
 
 .fa-zhihu {
@@ -22,11 +38,21 @@
     clear: both;
 }
 
-.user {
+.source-icon {
+   float: right;
+   vertical-align: text-top;
+}
+
+.source {
+    font-size: 2.4vh;
+    margin-right: 1.3vh;
+    vertical-align: top;
+
+}
+
+.card-body {
     margin-bottom: 4vh;
-    margin-left: 5vh;
     margin-top: 2vh;
-    text-align: left;
 }
 
 .userImage {
@@ -37,12 +63,12 @@
 .postContent {
     vertical-align: middle;
     margin-bottom: 3vh;
+    margin-top: 3vh;
 }
 
 .zhihuImage {
-    height: 60%;
-    width: 40%;
-    border: solid;
+    max-width: 40%;
+    margin: 3vh;
 }
 
 .postPopularity {
@@ -56,7 +82,6 @@
 }
 
 .userUrl, .postUrl {
-    margin-top: 2vh;
     background-color: #FFFF;
     color: #0084FF;
     font-size: 2.8vh;
@@ -75,8 +100,12 @@
 
 .addCloze {
     color:  #0084FF;
-    font-size: 7vh;
+    font-size: 3vh;
     margin-bottom: 1vh;
+}
+
+.postDate {
+    font-size: 3vh;
 }
 
 .addCloze:hover {
