@@ -17,7 +17,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const app = express()
 
 // mongoose.connect('mongodb://localhost/weiboClozed')
-mongoose.connect('mongodb://paulStorm:w31b020200403@ds231387.mlab.com:31387/heroku_1xm0ffdd')
+// mongoose.connect('mongodb://paulStorm:w31b020200403@ds231387.mlab.com:31387/heroku_1xm0ffdd')
 
 
 app.use(cookieSession({
@@ -65,7 +65,7 @@ if (process.env.NODE_ENV === 'production') {
   const path = require('path');
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client/ps-final-project-app', 'build', 'index.html'));
   });
 }
 
@@ -87,6 +87,7 @@ passport.use('login', new LocalStrategy ((username, password, done) => {
   dateCreated = date
 
   user.save()
+  const authenticated = username === "username" && password === "password";
 
   if (authenticated) {
     return done(null, { myUser:userName, myID: 1234 });
@@ -389,6 +390,6 @@ app.get("/test", checkAuthentication, (req, res) => {
   res.send("Success")
 })
 
-app.listen(5005, () => {
-    console.log("Server listening on port 5005")
-})
+// app.listen(5005, () => {
+//     console.log("Server listening on port 5005")
+// })
