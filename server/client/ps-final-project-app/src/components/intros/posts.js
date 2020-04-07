@@ -11,12 +11,17 @@ class IntroPosts extends Component {
             <div>
                 <h3 className="intro-header">Welcome to Posts!</h3>
                 <p className="intro-paragraph">On this page you can see read of the recent posts tailored to your reading level!</p>
-                <p className="intro-paragraph">This is an example post:</p>
-                <Image className="sample-post" src="https://raw.githubusercontent.com/paulwstorm/Paul-Storm-Final-Project/master/server/images/Screen%20Shot%202020-04-06%20at%207.29.37%20PM.png"></Image>
+                <p className="intro-paragraph">Use these buttons to toggle between reading posts and playing a fill-in-the-blank:</p>
+                <Image className="sample-post" src="https://raw.githubusercontent.com/paulwstorm/Paul-Storm-Final-Project/images/server/images/Screen%20Shot%202020-04-06%20at%207.45.45%20PM.png"></Image>
+                <br/>
                 <p className="intro-paragraph">
-                    For this post, the user is on the top left.
-                    Whatever the post, clicking on the top left hand corner with talk you the post source.
+                    Click on any character in the post to see the definition
                 </p>
+                <br/>
+                <p className="intro-paragraph">
+                    Clicking on save post allows you to save the post for later study
+                </p>
+                <Image className="sample-post" src="https://raw.githubusercontent.com/paulwstorm/Paul-Storm-Final-Project/images/server/images/Screen%20Shot%202020-04-06%20at%207.44.01%20PM.png"></Image> 
             </div>
         )
     }
