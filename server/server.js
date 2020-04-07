@@ -130,7 +130,11 @@ app.get("/userinfo", (req, res) => {
     if (err) {
       res.send(err)
     } else {
-      res.send(user[0])
+      if (user.length > 0) {
+        res.send(user[0])
+      } else {
+        res.send({})
+      }
     }
   })
 })

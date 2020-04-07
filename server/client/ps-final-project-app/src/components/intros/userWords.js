@@ -19,6 +19,11 @@ class IntroUserWords extends Component {
                     Use these buttons to toggle between reading the word defintions
                     and challening your vocabulary retention!
                 </p>
+                <Image className="sample-post" src="https://raw.githubusercontent.com/paulwstorm/Paul-Storm-Final-Project/images/server/images/Screen%20Shot%202020-04-06%20at%209.01.09%20PM.png" ></Image>
+                <p className="intro-paragraph">
+                    When in study mode, click the word to "flip" the flash card over
+                    and see the whole word.
+                </p>
             </div>
         )
     }

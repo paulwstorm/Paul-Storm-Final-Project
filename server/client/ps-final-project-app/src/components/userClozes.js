@@ -6,6 +6,8 @@ import './userClozes.css'
 import Header from "./header.js"
 import PostClozeCards from "./postClozeCards.js"
 import * as actions from "../actions/index.js"
+import IntroUserClozes from "./intros/userClozes.js"
+import Modal from 'react-bootstrap/Modal'
 
 class UserClozes extends Component{
     constructor () {
@@ -15,12 +17,15 @@ class UserClozes extends Component{
             show: false,
             view: "incorrect",
             incorrectButton: "button-on",
-            allButton: "button-off"
+            allButton: "button-off",
+            showIntroModal: false
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         this.props.getUserClozes(this.props.viewNum, this.props.startPost, this.state.view)
+        await this.props.getUser()
+
     }
 
     async handleToggleClick(view) {
@@ -62,11 +67,30 @@ class UserClozes extends Component{
         }
     }
 
+    async checkNewUser() {
+        if (Object.keys(this.props.user).length > 0) {
+            if ((!this.props.user.visited.includes("/user/clozes")) && (this.state.showIntroModal == false)) {
+                this.setState({showIntroModal: true})
+                await this.props.addRoomToUser("/user/clozes")
+            }
+        }
+    }
+
     render() {
+        this.checkNewUser()
         if (this.props.clozes.length == 0) {
             return (
                 <div>
                     <Header />
+                    <Modal
+                        className="intro-modal"
+                        size={"s"} 
+                        show={this.state.showIntroModal} 
+                        onHide={() => {this.setState({showIntroModal:false})}}>
+                        <Modal.Body class="intro-body">
+                            <IntroUserClozes></IntroUserClozes>
+                        </Modal.Body>
+                    </Modal>
                     <Row>
                         <Col xs={2}></Col>
                             <Col xs={8}>
@@ -87,6 +111,15 @@ class UserClozes extends Component{
                 return (
                     <div>
                         <Header />
+                        <Modal
+                            className="intro-modal"
+                            size={"s"} 
+                            show={this.state.showIntroModal} 
+                            onHide={() => {this.setState({showIntroModal:false})}}>
+                            <Modal.Body class="intro-body">
+                                <IntroUserClozes></IntroUserClozes>
+                            </Modal.Body>
+                        </Modal>
                         <Row>
                             <Col xs={2}></Col>
                                 <Col xs={8}>
@@ -107,7 +140,8 @@ function mapStateToProps(state) {
     return {
         clozes: state.clozes,
         viewNum: state.viewNum,
-        startPost: state.startPost
+        startPost: state.startPost,
+        user: state.user
     }
 }
 
