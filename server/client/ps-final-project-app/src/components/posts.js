@@ -94,7 +94,7 @@ class Posts extends Component{
                         size={"s"} 
                         show={this.state.showIntroModal} 
                         onHide={() => {this.setState({showIntroModal:false})}}>
-                            <Modal.Body class="dictionary-body">
+                            <Modal.Body class="intro-body">
                                 <IntroPosts></IntroPosts>
                             </Modal.Body>
                         </Modal>

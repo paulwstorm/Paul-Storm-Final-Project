@@ -8,19 +8,23 @@ import './intro.css'
 class IntroPosts extends Component {
     render() {
         return (
-            <div>
+            <div className="intro">
                 <h3 className="intro-header">Welcome to Posts!</h3>
                 <p className="intro-paragraph">On this page you can see read of the recent posts tailored to your reading level!</p>
                 <p className="intro-paragraph">Use these buttons to toggle between reading posts and playing a fill-in-the-blank:</p>
+                <br/>
                 <Image className="sample-post" src="https://raw.githubusercontent.com/paulwstorm/Paul-Storm-Final-Project/images/server/images/Screen%20Shot%202020-04-06%20at%207.45.45%20PM.png"></Image>
                 <br/>
                 <p className="intro-paragraph">
                     Click on any character in the post to see the definition
                 </p>
                 <br/>
+                <Image className="add-word-pic" src="https://raw.githubusercontent.com/paulwstorm/Paul-Storm-Final-Project/images/server/images/Screen%20Shot%202020-04-06%20at%208.02.30%20PM.png"></Image>
+                <br/>
                 <p className="intro-paragraph">
                     Clicking on save post allows you to save the post for later study
                 </p>
+                <br/>
                 <Image className="sample-post" src="https://raw.githubusercontent.com/paulwstorm/Paul-Storm-Final-Project/images/server/images/Screen%20Shot%202020-04-06%20at%207.44.01%20PM.png"></Image> 
             </div>
         )

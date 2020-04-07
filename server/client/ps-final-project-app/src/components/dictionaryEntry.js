@@ -8,6 +8,10 @@ import * as actions from "../actions/index.js"
 
 class DictionaryEntry extends Component{
 
+    componentDidMount() {
+        this.props.wordSearch(this.props.searchTerm)
+    }
+
     onEntryClick(word) {
         this.props.addWordToUserDict(word)
         alert(`${word.simplified} added to your dictionary!`)

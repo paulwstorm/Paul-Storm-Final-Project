@@ -6,10 +6,31 @@ import './postClozes.css'
 import Header from "./header.js"
 import PostClozeCards from "./postClozeCards.js"
 import * as actions from "../actions/index.js"
+import Modal from 'react-bootstrap/Modal'
+import IntroClozes from "./intros/clozes.js"
 
 class PostClozes extends Component{
-    componentDidMount() {
+    constructor() {
+        super()
+
+        this.state = {
+            showIntroModal: false
+        }
+    }
+
+    async componentDidMount() {
         this.props.getPostClozes(this.props.viewNum, this.props.startPost)
+        await this.props.getUser()
+    }
+
+    async checkNewUser() {
+        if (Object.keys(this.props.user).length > 0) {
+            if ((!this.props.user.visited.includes("/posts/clozes")) && (this.state.showIntroModal == false)) {
+                this.setState({showIntroModal: true})
+                await this.props.addRoomToUser("/posts/clozes")
+            }
+        }
+
     }
 
     renderButtons() {
@@ -47,6 +68,7 @@ class PostClozes extends Component{
     }
 
     render() {
+        this.checkNewUser()
         if (this.props.clozes.length == 0) {
             return (
                 <div>
@@ -63,6 +85,15 @@ class PostClozes extends Component{
                 return (
                     <div>
                         <Header />
+                        <Modal
+                        className="intro-modal"
+                        size={"s"} 
+                        show={this.state.showIntroModal} 
+                        onHide={() => {this.setState({showIntroModal:false})}}>
+                            <Modal.Body class="dictionary-body">
+                                <IntroClozes></IntroClozes>
+                            </Modal.Body>
+                        </Modal>
                         <Row>
                             <Col xs={2}></Col>
                                 <Col xs={8}>
@@ -83,7 +114,8 @@ function mapStateToProps(state) {
     return {
         clozes: state.clozes,
         viewNum: state.viewNum,
-        startPost: state.startPost
+        startPost: state.startPost,
+        user: state.user
     }
 }
 
