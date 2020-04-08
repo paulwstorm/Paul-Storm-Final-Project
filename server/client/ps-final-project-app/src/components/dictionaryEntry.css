@@ -39,9 +39,19 @@
     font-size: .75em;
 }
 
+.search-term {
+    max-width: 55%;
+}
+
 .search-bar {
     margin-top: 5%;
     margin-bottom: 10%;
     margin-left: 10%;
     margin-right: 10%;
+    font-size: 3vh;
+}
+
+.language-dropdown {
+    margin-left: 3%;
+    width: 18vh;
 }

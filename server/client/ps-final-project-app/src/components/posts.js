@@ -27,10 +27,8 @@ class Posts extends Component{
     }
 
     async checkNewUser() {
-        console.log((this.state.showIntroModal == false))
         if (Object.keys(this.props.user).length > 0) {
             if ((!this.props.user.visited.includes("/posts")) && (this.state.showIntroModal == false)) {
-                console.log("Inside")
                 this.setState({showIntroModal: true})
                 await this.props.addRoomToUser("/posts")
             }

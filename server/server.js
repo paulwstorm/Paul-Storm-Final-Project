@@ -116,13 +116,31 @@ function checkAuthentication(req,res,next){
 }
 
 app.get("/wordsearch", (req,res) => {
-  Dictionary.find({ simplified: req.query.query}).exec((err, result) => {
-    if (err) {
-      res.send(err)
-    } else {
-      res.send(result)
-    }
-  })
+  if (req.query.lang == "Chinese") {
+    Dictionary
+      .find({simplified: req.query.query})
+      .limit(5)
+      .exec((err, result) => {
+        if (err) {
+          res.send(err)
+        } else {
+          res.send(result)
+        }
+    })
+  } else if (req.query.lang == "English") {
+    const query = req.query.query
+    const regExQuery = new RegExp(`/${query}/`, "i")
+  
+    Dictionary
+      .find({english: { $regex: query}})
+      .exec((err, result) => {
+        if (err) {
+          res.send(err)
+        } else {
+          res.send(result)
+        }
+      })
+  }
 })
 
 app.get("/userinfo", (req, res) => {

@@ -7,7 +7,7 @@ class IntroUserWords extends Component {
     render() {
         return (
             <div>
-                <h3 className="intro-header">Welcome to You Dictionary!</h3>
+                <h3 className="intro-header">Welcome to Your Dictionary!</h3>
                 <p className="intro-paragraph">
                     If you don't see any words here go back
                     to the posts page and click on any word in the post.

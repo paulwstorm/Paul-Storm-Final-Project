@@ -121,6 +121,17 @@
     border-color: #FFA424;
 }
 
+.addCloze {
+    color:  #0084FF;
+    font-size: 5vh;
+    margin-bottom: 1vh;
+}
+
+.addCloze:hover {
+    cursor: pointer;
+}
+
+
 .postUrl {
     border: none;
     float: left;

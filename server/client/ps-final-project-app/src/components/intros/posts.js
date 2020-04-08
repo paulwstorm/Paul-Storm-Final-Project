@@ -19,13 +19,13 @@ class IntroPosts extends Component {
                     Click on any character in the post to see the definition
                 </p>
                 <br/>
+                <p className="intro-paragraph">
+                    Clicking the "+" on any post or dictionary entry allows you to save
+                    the word or post for later study.
+                </p>
                 <Image className="add-word-pic" src="https://raw.githubusercontent.com/paulwstorm/Paul-Storm-Final-Project/images/server/images/Screen%20Shot%202020-04-06%20at%208.02.30%20PM.png"></Image>
                 <br/>
-                <p className="intro-paragraph">
-                    Clicking on save post allows you to save the post for later study
-                </p>
                 <br/>
-                <Image className="sample-post" src="https://raw.githubusercontent.com/paulwstorm/Paul-Storm-Final-Project/images/server/images/Screen%20Shot%202020-04-06%20at%207.44.01%20PM.png"></Image> 
             </div>
         )
     }

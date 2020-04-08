@@ -70,7 +70,7 @@ class UserWords extends Component {
 
     render() {
         this.checkNewUser()
-        if (this.props.words.length == 0) {
+        if (Object.keys(this.props.user).length == 0) {
             return (
                 <div>
                     <Header />
@@ -91,7 +91,33 @@ class UserWords extends Component {
                         <Col xs={4}></Col>
                     </Row>
                 </div>
-            )} else {
+            )} else if (this.props.words.length == 0) {
+                return (
+                    <div>
+                    <Header />
+                    <Modal
+                            className="intro-modal"
+                            size={"s"} 
+                            show={this.state.showIntroModal} 
+                            onHide={() => {this.setState({showIntroModal:false})}}>
+                            <Modal.Body class="intro-body">
+                                <IntroUserWords></IntroUserWords>
+                            </Modal.Body>
+                        </Modal>
+                    <Row>
+                        <Col xs={4}></Col>
+                        <Col xs={4}>
+                            <h2 className="loading">Your dictionary is empty!</h2>
+                            <p>
+                                Click on the search bar to search the dictionary
+                                or click on any post to add words from that post.
+                            </p>
+                        </Col>
+                        <Col xs={4}></Col>
+                    </Row>
+                 </div>
+                )
+            } else {
                 return (
                     <div>
                         <Header />

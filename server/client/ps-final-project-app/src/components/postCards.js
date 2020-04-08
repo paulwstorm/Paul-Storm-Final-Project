@@ -15,12 +15,14 @@ class PostCards extends Component{
         this.state = {
             show: false
         }
+
+        this.wordOnClick = this.wordOnClick.bind(this)
     }
 
     renderPostWords(postContent) {
         return (
             postContent.map(word => {
-                return <span onClick={() => {this.setState({show: true}); this.wordOnClick(word[0])}}>{ word[0] }</span>
+                return <span onClick={() => {this.wordOnClick(word[0])}}>{ word[0] }</span>
             })
         )
     }
@@ -32,7 +34,8 @@ class PostCards extends Component{
 
     async wordOnClick(word) {
         await this.props.newSearchTerm(word)
-        this.props.wordSearch(this.props.searchTerm)
+        // this.props.wordSearch(this.props.searchTerm)
+        this.setState({show: true})
     }
 
     renderContentImage(post) {
@@ -81,7 +84,7 @@ class PostCards extends Component{
                                     <div className="postContent">{ this.renderPostWords(post.postTokenizedContent) }</div>
                                     <Row className="cardBotom">     
                                             <Col xs={6}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
-                                            <Col xs={6}><span class="addCloze" onClick={() => {this.addClozeButton(post)}}>Save Post</span></Col>
+                                            <Col xs={6}><span class="material-icons addCloze" onClick={() => {this.addClozeButton(post)}}>add_circle_outline</span></Col>
                                     </Row>
                                 </div>
                             </Card>
@@ -113,7 +116,7 @@ class PostCards extends Component{
                                     { this.renderContentImage(post)}
                                     <Row className="cardBotom">                                    
                                         <Col xs={6}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
-                                        <Col xs={6}><span class="addCloze" onClick={() => {this.addClozeButton(post)}}>Save Post</span></Col>
+                                        <Col xs={6}><span class="material-icons addCloze" onClick={() => {this.addClozeButton(post)}}>add_circle_outline</span></Col>
                                     </Row>
                                 </div>
                             </Card>
@@ -147,7 +150,7 @@ class PostCards extends Component{
                                         </div>
                                     <Row className="cardBotom">                                    
                                         <Col xs={6}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
-                                        <Col xs={6}><span class="addCloze" onClick={() => {this.addClozeButton(post)}}>Save Post</span></Col>
+                                        <Col xs={6}><span class="material-icons addCloze" onClick={() => {this.addClozeButton(post)}}>add_circle_outline</span></Col>
                                     </Row>
                                 </div>
                             </Card>
