@@ -17,7 +17,7 @@ class Header extends Component{
     }
 
     async componentDidMount() {
-        await this.props.getUser()
+        // await this.props.getUser()
     }
 
     userNotSignedIn() {
@@ -63,9 +63,9 @@ class Header extends Component{
                     </Modal.Body>
                 </Modal>
                 <div className="header">
-                    {this.renderUserIcon()}
+                    <Link to={"/user"}><span className="user-icon"><i class="fas fa-user fa-1x"></i></span></Link>
                     <Link to={"/posts"}><span className="header-text">Cloze Weibo</span></Link>
-                    {this.renderSearchIcon()}
+                    <span className="search-icon" onClick={event => {this.userNotSignedIn()}}><i class="fas fa-search fa-1x"></i></span>
                 </div>
             </div>
         )

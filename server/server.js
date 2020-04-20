@@ -12,6 +12,8 @@ const session = require("express-session")
 const ObjectId = require('mongoose').Types.ObjectId
 const querySring = require('querystring')
 
+const port = process.env.PORT || 5005;
+
 const LocalStrategy = require('passport-local').Strategy;
 
 const app = express()
@@ -65,7 +67,7 @@ if (process.env.NODE_ENV === 'production') {
   const path = require('path');
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client/ps-final-project-app', 'build', 'index.html'));
   });
 }
 
@@ -175,8 +177,8 @@ app.post("/userinfo", (req, res) => {
 })
 
 app.post('/login', passport.authenticate('login', {
-  successRedirect: 'http://localhost:3000/posts',
-  failureRedirect: 'http://localhost:3000/'
+  successRedirect: '/posts',
+  failureRedirect: '/'
 }));
 
 app.get("/posts", checkAuthentication, (req, res) => {
@@ -256,10 +258,22 @@ app.get("/posts/clozes",  (req, res) => {
                 clozedPostTokenizedContent.push(clozedTokenizedWord)
               })
 
+              let startWord = Math.floor(Math.random() * ((viewNum*3)-3))
+              let addedWords = 0
               replacementWords = []
-              replacementWords.push(words[count].word)
-              replacementWords.push(words[count + 1].word)
-              replacementWords.push(words[count + 2].word)
+
+              while (addedWords < 3) {
+                if (!(words[startWord+addedWords].posTag == removedWord[1])) {
+                  replacementWords.push(words[startWord+addedWords])
+                  addedWords += 1
+                  console.log(replacementWords)
+                }
+              }
+
+              // replacementWords = []
+              // replacementWords.push(words[count].word)
+              // replacementWords.push(words[count + 1].word)
+              // replacementWords.push(words[count + 2].word)
 
               clozedPost.push(clozedPostTokenizedContent)
               clozedPost.push(removedWord)
@@ -444,6 +458,6 @@ app.get("/test", checkAuthentication, (req, res) => {
   res.send("Success")
 })
 
-app.listen(5005, () => {
-    console.log("Server listening on port 5005")
+app.listen(port, () => {
+    console.log("Server listening on port", port)
 })

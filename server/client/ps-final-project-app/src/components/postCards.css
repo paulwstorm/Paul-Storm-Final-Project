@@ -90,7 +90,6 @@
 }
 
 .userUrl:hover, .postUrl:hover {
-    margin-top: 2vh;
     background-color: #0084FF;
     border-style: none;
     font-size: 2.8vh;

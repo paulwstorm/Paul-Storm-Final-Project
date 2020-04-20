@@ -34,7 +34,7 @@ export function addRoomToUser(room) {
 }
 
 export function getPosts(viewNum, startPost) {
-    const posts = axios.get(`${ROOT_URL}/posts?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
+    const posts = axios.get(`/posts?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
 
     return {
         type: GET_POSTS,
@@ -43,7 +43,7 @@ export function getPosts(viewNum, startPost) {
 }
 
 export async function getPostClozes(viewNum, startPost) {
-    const clozes = await axios.get(`${ROOT_URL}/posts/clozes?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
+    const clozes = await axios.get(`/posts/clozes?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
 
     return {
         type: GET_POST_CLOZES,
@@ -52,7 +52,7 @@ export async function getPostClozes(viewNum, startPost) {
 }
 
 export function getUserClozes(viewNum, startPost, view) {
-    const userClozes = axios.get(`${ROOT_URL}/user/clozes?viewNum=${viewNum}&startPost=${startPost}&view=${view}`, {withCredentials: true})
+    const userClozes = axios.get(`/user/clozes?viewNum=${viewNum}&startPost=${startPost}&view=${view}`, {withCredentials: true})
 
     return {
         type: GET_USER_CLOZES,
@@ -61,9 +61,9 @@ export function getUserClozes(viewNum, startPost, view) {
 }
 
 export async function getWords(viewNum, startPost, view) {
-    const words = await axios.get(`${ROOT_URL}/user/words?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
+    const words = await axios.get(`/user/words?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
 
-    console.log(`${ROOT_URL}/user/clozes?viewNum=${viewNum}&startPost=${startPost}&view=${view}`)
+    console.log(`/user/clozes?viewNum=${viewNum}&startPost=${startPost}&view=${view}`)
     return {
         type: GET_WORDS,
         payload: words
@@ -89,7 +89,7 @@ export function markClozeCorrect(mark, cloze, clozes) {
     markedCloze.lastAttempt = mark
     markedCloze.lastAttemptDate = new Date()
 
-    const postMarkedCloze = axios.post(`${ROOT_URL}/posts/clozes`, markedCloze, {withCredentials: true})
+    const postMarkedCloze = axios.post(`/posts/clozes`, markedCloze, {withCredentials: true})
 
     let clozesMinusMarked = clozes.filter(c => {
         return c.postContent != cloze.postContent
@@ -109,7 +109,7 @@ export function addClozeToUser(cloze) {
     markedCloze.multipleChoiceWords = []
     markedCloze.removedWord = ""
 
-    const postMarkedCloze = axios.post(`${ROOT_URL}/posts/clozes`, markedCloze, {withCredentials: true})
+    const postMarkedCloze = axios.post(`/posts/clozes`, markedCloze, {withCredentials: true})
 
     return postMarkedCloze 
 }
@@ -125,7 +125,7 @@ export function wordSearch(word, language) {
 }
 
 export function addWordToUserDict(word) {
-    const addWord = axios.put(axios.post(`${ROOT_URL}/addWordToDict`, word, {withCredentials: true}))
+    const addWord = axios.put(axios.post(`/addWordToDict`, word, {withCredentials: true}))
 
     return addWord
 }
