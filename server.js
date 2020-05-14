@@ -12,7 +12,7 @@ const session = require("express-session")
 const ObjectId = require('mongoose').Types.ObjectId
 const querySring = require('querystring')
 
-const port = process.env.PORT || 5005;
+const port = process.env.PORT || 5010;
 
 const LocalStrategy = require('passport-local').Strategy;
 
@@ -67,7 +67,7 @@ if (process.env.NODE_ENV === 'production') {
   const path = require('path');
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client/ps-final-project-app', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client/', 'build', 'index.html'));
   });
 }
 
