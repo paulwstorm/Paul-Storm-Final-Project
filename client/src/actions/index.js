@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const ROOT_URL = "http://localhost:5005"
+// const ROOT_URL = "http://localhost:5005"
 
 export const GET_POSTS = 'get_posts'
 export const GET_POST_CLOZES = "get_post_clozes"
@@ -15,17 +15,7 @@ export const GET_WORDS = "get_words"
 export const GET_USER = "get_user"
 
 export function getUser() {
-    const user = axios.get(`${ROOT_URL}/userinfo`, {withCredentials: true})
-
-    return {
-        type: GET_USER,
-        payload: user
-    }
-}
-
-export function addRoomToUser(room) {
-    const roomToSend = {room:room}
-    const user = axios.post(`${ROOT_URL}/userinfo`, roomToSend, {withCredentials: true})
+    const user = axios.get(`/userinfo`, {withCredentials: true})
 
     return {
         type: GET_USER,
