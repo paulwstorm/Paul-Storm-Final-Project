@@ -162,6 +162,7 @@ app.post('/backend/login', passport.authenticate('login', {
 }));
 
 app.get("/backend/posts", checkAuthentication, (req, res) => {
+  console.log(req.url)
   let viewNum = parseInt(req.query.viewNum)
   let startPost = parseInt(req.query.startPost)
   Post.deleteMany({postChars: { $size: 0 }}).exec((err) => {
