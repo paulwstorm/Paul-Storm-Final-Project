@@ -7,6 +7,19 @@ import './dictionaryEntry.css'
 import * as actions from "../actions/index.js"
 
 class DictionaryEntry extends Component{
+    constructor () {
+        super()
+
+        this.state = {
+            searchLanguage: "Chinese"
+        }
+
+        this.wordOnClick = this.wordOnClick.bind(this)
+    }
+
+    componentDidMount() {
+        this.props.wordSearch(this.props.searchTerm, this.state.searchLanguage)
+    }
 
     onEntryClick(word) {
         this.props.addWordToUserDict(word)
@@ -15,7 +28,7 @@ class DictionaryEntry extends Component{
 
     async wordOnClick(word) {
         await this.props.newSearchTerm(word)
-        this.props.wordSearch(this.props.searchTerm)
+        this.props.wordSearch(this.props.searchTerm, this.state.searchLanguage)
     }
 
     render() {
@@ -27,9 +40,14 @@ class DictionaryEntry extends Component{
                         <span>
                             <form className="input-group search-bar">
                                 <input
+                                    className="search-term"
                                     value={this.props.searchTerm}
-                                    onChange={(event) => {console.log(event.target.value);this.wordOnClick(event.target.value)}}
+                                    onChange={(event) => {this.wordOnClick(event.target.value)}}
                                 />
+                                <select className="language-dropdown" onChange={event => {this.setState({ searchLanguage: event.target.value })}}>
+                                    <option value="Chinese">Chinese</option>
+                                    <option value="English">English</option>
+                                </select>
                             </form>
                         </span>
                     </Row>
@@ -47,6 +65,10 @@ class DictionaryEntry extends Component{
                                     value={this.props.searchTerm}
                                     onChange={(event) => {console.log(event.target.value);this.wordOnClick(event.target.value)}}
                                 />
+                                <select className="category-dropdown" onChange={event => {this.setState({ searchLanguage: event.target.value })}}>
+                                    <option value="Chinese">Chinese</option>
+                                    <option value="English">English</option>
+                                </select>
                             </form>
                         </span>
                     </Row>
