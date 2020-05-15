@@ -152,7 +152,7 @@ app.get("/backend/posts", checkAuthentication, (req, res) => {
   console.log("154")
   console.log(req.user.myUser)
   User.find({userName: req.user.myUser}).exec((err, user) => {
-    console.log("156: ", err)
+    console.log("156: ", user)
     if (err) {
       console.log("158: ", err)
       res.send(err)
