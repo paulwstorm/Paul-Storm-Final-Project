@@ -152,6 +152,7 @@ app.get("/backend/posts", checkAuthentication, (req, res) => {
   let startPost = parseInt(req.query.startPost)
   Post.deleteMany({postChars: { $size: 0 }}).exec((err) => {
     console.log("154")
+    console.log(req.user.myUser)
     User.find({userName: req.user.myUser}).exec((err, user) => {
       console.log("156")
       if (err) {
