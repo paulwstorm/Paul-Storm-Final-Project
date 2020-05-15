@@ -67,7 +67,7 @@ if (process.env.NODE_ENV === 'production') {
   const path = require('path');
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client/', 'build', 'index.html'));
+    res.send(req);
   });
 }
 
@@ -155,11 +155,11 @@ app.post("/backend/userinfo", (req, res) => {
 })
 
 app.post('/login', passport.authenticate('login', {
-  successRedirect: 'https://sleepy-garden-68724.herokuapp.com/posts',
+  successRedirect: '/posts',
   failureRedirect: '/'
 }));
 
-app.get("https://sleepy-garden-68724.herokuapp.com/backend/posts", checkAuthentication, (req, res) => {
+app.get("/backend/posts", checkAuthentication, (req, res) => {
   let viewNum = parseInt(req.query.viewNum)
   let startPost = parseInt(req.query.startPost)
   Post.deleteMany({postChars: { $size: 0 }}).exec((err) => {
