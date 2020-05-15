@@ -20,7 +20,7 @@ const proxy = require('http-proxy-middleware')
 
 module.exports = function(app) {
     // add other server routes to path array
-    app.use(proxy(['/api' ], { target: 'http://localhost:5000' }));
+    app.use(proxy(['/backend' ], { target: 'http://localhost:5000' }));
 }
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
