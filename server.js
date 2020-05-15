@@ -427,10 +427,6 @@ app.get("/backend/clozes/newCloze", (req, res) => {
   })
 })
 
-app.get("/test", checkAuthentication, (req, res) => {
-  res.send("Success")
-})
-
 if (process.env.NODE_ENV === 'production') {
   // Express will serve up production assets
   // like our main.js file, or main.css file!
