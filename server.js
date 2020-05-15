@@ -12,7 +12,7 @@ const session = require("express-session")
 const ObjectId = require('mongoose').Types.ObjectId
 const querySring = require('querystring')
 
-const port = process.env.PORT || 5010;
+const port = process.env.PORT || 5005;
 
 const LocalStrategy = require('passport-local').Strategy;
 
