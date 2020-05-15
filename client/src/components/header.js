@@ -65,8 +65,7 @@ class Header extends Component{
                 <div className="header">
                     <Link to={"/user"}><span className="user-icon"><i class="fas fa-user fa-1x"></i></span></Link>
                     <Link to={"/posts"}><span className="header-text">Cloze Weibo</span></Link>
-                    <span className="search-icon" onClick={event => {this.userNotSignedIn()}}><i class="fas fa-search fa-1x"></i></span>
-                </div>
+                    <span className="search-icon"><i class="fas fa-search fa-1x" onClick={() => {this.setState({show:true})}}></i></span>                </div>
             </div>
         )
     }

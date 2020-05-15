@@ -19,7 +19,6 @@ const LocalStrategy = require('passport-local').Strategy;
 const app = express()
 
 // mongoose.connect('mongodb://localhost/weiboClozed')
-//adding
 mongoose.connect('mongodb://paulStorm:w31b020200403@ds231387.mlab.com:31387/heroku_1xm0ffdd')
 
 
