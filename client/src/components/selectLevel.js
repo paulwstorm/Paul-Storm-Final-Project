@@ -24,7 +24,7 @@ class SelectLevel extends Component{
         <Row>
           <Col xs = {4}></Col>
           <Col xs = {4}>
-            <form action="/backend/login" method="post">
+            <form action="/login" method="post">
               <div className="usernamePassword">
                 <label>Username:</label>
                 <input type="text" name="username" value="1"/>
@@ -35,7 +35,7 @@ class SelectLevel extends Component{
               </div>
               <Button variant = "secondary" type="submit" value="Log In" className="level-button" block>Level 1</Button>
             </form>
-            <form action="/backend/login" method="post">
+            <form action="/login" method="post">
               <div className="usernamePassword">
                 <label>Username:</label>
                 <input type="text" name="username" value="2"/>
@@ -46,7 +46,7 @@ class SelectLevel extends Component{
               </div>
               <Button variant = "secondary" type="submit" value="Log In" className="level-button" block>Level 2</Button>
             </form>
-            <form action="/backend/login" method="post">
+            <form action="/login" method="post">
               <div className="usernamePassword">
                 <label>Username:</label>
                 <input type="text" name="username" value="3"/>
@@ -57,7 +57,7 @@ class SelectLevel extends Component{
               </div>
               <Button variant = "secondary" type="submit" value="Log In" className="level-button" block>Level 3</Button>
             </form>
-            <form action="/backend/login" method="post">
+            <form action="/login" method="post">
               <div className="usernamePassword">
                 <label>Username:</label>
                 <input type="text" name="username" value="4"/>
@@ -68,7 +68,7 @@ class SelectLevel extends Component{
               </div>
               <Button variant = "secondary" type="submit" value="Log In" className="level-button" block>Level 4</Button>
             </form>
-            <form action="/backend/login" method="post">
+            <form action="/login" method="post">
               <div className="usernamePassword">
                 <label>Username:</label>
                 <input type="text" name="username" value="5"/>
@@ -79,7 +79,7 @@ class SelectLevel extends Component{
               </div>
               <Button variant = "secondary" type="submit" value="Log In" className="level-button" block>Level 5</Button>
             </form>
-            <form action="/backend/login" method="post">
+            <form action="/login" method="post">
               <div className="usernamePassword">
                 <label>Username:</label>
                 <input type="text" name="username" value="6"/>
