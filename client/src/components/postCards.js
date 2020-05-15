@@ -75,7 +75,7 @@ class PostCards extends Component{
                                                 </a>
                                             </div>
                                         </Col>
-                                        <Col s={2}><div className="post-level">Level {post.postLevel}</div></Col>
+                                        <Col s={2} className="post-level-col"><div className="post-level">Level {post.postLevel}</div></Col>
                                         <Col s={2} className="source-icon">
                                             <span className="source">Source</span>
                                             <i class="fab fa-weibo fa-1x"></i>

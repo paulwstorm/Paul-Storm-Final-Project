@@ -19,6 +19,9 @@
 .post-level {
     font-size: 2.4vh;
     float: right;
+}
+
+.post-level-card {
     width: 20%;
 }
 
