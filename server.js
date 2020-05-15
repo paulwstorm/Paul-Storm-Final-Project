@@ -155,11 +155,11 @@ app.post("/backend/userinfo", (req, res) => {
 })
 
 app.post('/login', passport.authenticate('login', {
-  successRedirect: '/posts',
+  successRedirect: 'https://sleepy-garden-68724.herokuapp.com/posts',
   failureRedirect: '/'
 }));
 
-app.get("/backend/posts", checkAuthentication, (req, res) => {
+app.get("https://sleepy-garden-68724.herokuapp.com/backend/posts", checkAuthentication, (req, res) => {
   let viewNum = parseInt(req.query.viewNum)
   let startPost = parseInt(req.query.startPost)
   Post.deleteMany({postChars: { $size: 0 }}).exec((err) => {
