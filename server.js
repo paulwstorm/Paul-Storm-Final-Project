@@ -117,7 +117,7 @@ function checkAuthentication(req,res,next){
   }
 }
 
-app.get("/wordsearch", (req,res) => {
+app.get("/backend/wordsearch", (req,res) => {
   Dictionary.find({ simplified: req.query.query}).exec((err, result) => {
     if (err) {
       res.send(err)
@@ -127,7 +127,7 @@ app.get("/wordsearch", (req,res) => {
   })
 })
 
-app.get("/userinfo", (req, res) => {
+app.get("/backend/userinfo", (req, res) => {
   User.find({userName: req.user.myUser}).exec((err, user) => {
     if (err) {
       res.send(err)
@@ -137,7 +137,7 @@ app.get("/userinfo", (req, res) => {
   })
 })
 
-app.post("/userinfo", (req, res) => {
+app.post("/backend/userinfo", (req, res) => {
   User.find({userName: req.user.myUser}).exec((err, user) => {
     if (err) {
       res.send(err)
@@ -159,7 +159,7 @@ app.post('/login', passport.authenticate('login', {
   failureRedirect: '/'
 }));
 
-app.get("/posts", checkAuthentication, (req, res) => {
+app.get("/backend/posts", checkAuthentication, (req, res) => {
   let viewNum = parseInt(req.query.viewNum)
   let startPost = parseInt(req.query.startPost)
   Post.deleteMany({postChars: { $size: 0 }}).exec((err) => {
@@ -180,7 +180,7 @@ app.get("/posts", checkAuthentication, (req, res) => {
 })
 
 
-app.get("/user/words", checkAuthentication, (req, res) => {
+app.get("/backend/user/words", checkAuthentication, (req, res) => {
   let viewNum = parseInt(req.query.viewNum)
   let startPost = parseInt(req.query.startPost)
 
@@ -202,7 +202,7 @@ app.get("/user/words", checkAuthentication, (req, res) => {
   })
 })
 
-app.get("/posts/clozes",  (req, res) => {
+app.get("/backend/posts/clozes",  (req, res) => {
   let viewNum = parseInt(req.query.viewNum)
   let startPost = parseInt(req.query.startPost)
 
@@ -258,7 +258,7 @@ app.get("/posts/clozes",  (req, res) => {
   })
 })
 
-app.get("/user/clozes",  (req, res) => {
+app.get("/backend/user/clozes",  (req, res) => {
   let viewNum = parseInt(req.query.viewNum)
   let startPost = parseInt(req.query.startPost)
 
@@ -325,7 +325,7 @@ app.get("/user/clozes",  (req, res) => {
   })
 })
 
-app.post("/posts/clozes", (req, res) => {
+app.post("/backend/posts/clozes", (req, res) => {
   let markedCloze = req.body
 
   User.findOne({userName: req.user.myUser}).exec((err, user) => {
@@ -349,7 +349,7 @@ app.post("/posts/clozes", (req, res) => {
   })
 })
 
-app.post("/addWordToDict", (req, res) => {
+app.post("/backend/addWordToDict", (req, res) => {
   let word = req.body
   User.findOne({userName: req.user.myUser}).exec((err, user) => {
     if (err) {
@@ -368,7 +368,7 @@ app.post("/addWordToDict", (req, res) => {
   })
 })
 
-app.get("/clozes/newCloze", (req, res) => {
+app.get("/backend/clozes/newCloze", (req, res) => {
 
   Post.estimatedDocumentCount().exec((err, count) => {
     let startIndex = Math.floor(Math.random() * count)
