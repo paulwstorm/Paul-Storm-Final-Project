@@ -1,3 +1,18 @@
 .intro-header {
     margin-top: 5%;
+}.intro-header {
+    margin-top: 5%;
 }
+
+.sample-post {
+    width: 80%;
+}
+
+.add-word-pic {
+    height: 23vh;
+}
+
+.intro-paragraph {
+    margin: 2%;
+}
+
