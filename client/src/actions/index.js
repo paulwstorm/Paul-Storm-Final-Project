@@ -23,6 +23,16 @@ export function getUser() {
     }
 }
 
+export function addRoomToUser(room) {
+    const roomToSend = {room:room}
+    const user = axios.post(`/backend/userinfo`, roomToSend, {withCredentials: true})
+
+    return {
+        type: GET_USER,
+        payload: user
+    }
+}
+
 export function getPosts(viewNum, startPost) {
     const posts = axios.get(`/backend/posts?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
 
