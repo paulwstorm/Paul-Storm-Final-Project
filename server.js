@@ -99,7 +99,7 @@ passport.use('login', new LocalStrategy ((username, password, done) => {
 }));
 
 passport.serializeUser((user, done) => {
-  console.log(req);
+  console.log(user);
   done(null, user);
 });
 
@@ -109,6 +109,7 @@ passport.deserializeUser((user, done) => {
 });
 
 function checkAuthentication(req,res,next){
+  console.log(req.url)
   if(req.isAuthenticated()){
       //req.isAuthenticated() will return true if user is logged in
       next();
