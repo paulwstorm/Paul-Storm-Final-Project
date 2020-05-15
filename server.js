@@ -21,13 +21,6 @@ const app = express()
 // mongoose.connect('mongodb://localhost/weiboClozed')
 // mongoose.connect('mongodb://paulStorm:w31b020200403@ds231387.mlab.com:31387/heroku_1xm0ffdd')
 
-const proxy = require('http-proxy-middleware')
-
-module.exports = function(app) {
-    // add other server routes to path array
-    app.use(proxy(['/backend' ], { target: 'http://localhost:5000' }));
-} 
-
 
 app.use(cookieSession({
   name: 'session',
