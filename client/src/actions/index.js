@@ -15,7 +15,7 @@ export const GET_WORDS = "get_words"
 export const GET_USER = "get_user"
 
 export function getUser() {
-    const user = axios.get(`/backend/userinfo`, {withCredentials: true})
+    const user = axios.get(`https://sleepy-garden-68724.herokuapp.com/backend/userinfo`, {withCredentials: true})
 
     return {
         type: GET_USER,
@@ -24,7 +24,7 @@ export function getUser() {
 }
 
 export function getPosts(viewNum, startPost) {
-    const posts = axios.get(`/backend/posts?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
+    const posts = axios.get(`https://sleepy-garden-68724.herokuapp.com/backend/posts?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
 
     return {
         type: GET_POSTS,
@@ -33,7 +33,7 @@ export function getPosts(viewNum, startPost) {
 }
 
 export async function getPostClozes(viewNum, startPost) {
-    const clozes = await axios.get(`/backend/posts/clozes?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
+    const clozes = await axios.get(`https://sleepy-garden-68724.herokuapp.com/backend/posts/clozes?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
 
     return {
         type: GET_POST_CLOZES,
@@ -42,7 +42,7 @@ export async function getPostClozes(viewNum, startPost) {
 }
 
 export function getUserClozes(viewNum, startPost, view) {
-    const userClozes = axios.get(`/backend/user/clozes?viewNum=${viewNum}&startPost=${startPost}&view=${view}`, {withCredentials: true})
+    const userClozes = axios.get(`https://sleepy-garden-68724.herokuapp.com/backend/user/clozes?viewNum=${viewNum}&startPost=${startPost}&view=${view}`, {withCredentials: true})
 
     return {
         type: GET_USER_CLOZES,
@@ -51,7 +51,7 @@ export function getUserClozes(viewNum, startPost, view) {
 }
 
 export async function getWords(viewNum, startPost, view) {
-    const words = await axios.get(`/backend/user/words?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
+    const words = await axios.get(`https://sleepy-garden-68724.herokuapp.com/backend/user/words?viewNum=${viewNum}&startPost=${startPost}`, {withCredentials: true})
 
     return {
         type: GET_WORDS,
@@ -78,7 +78,7 @@ export function markClozeCorrect(mark, cloze, clozes) {
     markedCloze.lastAttempt = mark
     markedCloze.lastAttemptDate = new Date()
 
-    const postMarkedCloze = axios.post(`/backend/posts/clozes`, markedCloze, {withCredentials: true})
+    const postMarkedCloze = axios.post(`https://sleepy-garden-68724.herokuapp.com/backend/posts/clozes`, markedCloze, {withCredentials: true})
 
     let clozesMinusMarked = clozes.filter(c => {
         return c.postContent != cloze.postContent
@@ -98,13 +98,13 @@ export function addClozeToUser(cloze) {
     markedCloze.multipleChoiceWords = []
     markedCloze.removedWord = ""
 
-    const postMarkedCloze = axios.post(`/backend/posts/clozes`, markedCloze, {withCredentials: true})
+    const postMarkedCloze = axios.post(`https://sleepy-garden-68724.herokuapp.com/backend/posts/clozes`, markedCloze, {withCredentials: true})
 
     return postMarkedCloze 
 }
 
 export function wordSearch(word) {
-    const searchResult = axios.get(`/backend/wordsearch?query=${word}`, {withCredentials: true})
+    const searchResult = axios.get(`https://sleepy-garden-68724.herokuapp.com/backend/wordsearch?query=${word}`, {withCredentials: true})
 
     return {
         type: WORD_SEARCH,
@@ -114,7 +114,7 @@ export function wordSearch(word) {
 }
 
 export function addWordToUserDict(word) {
-    const addWord = axios.put(axios.post(`/backend/addWordToDict`, word, {withCredentials: true}))
+    const addWord = axios.put(axios.post(`https://sleepy-garden-68724.herokuapp.com/backend/addWordToDict`, word, {withCredentials: true}))
 
     return addWord
 }
