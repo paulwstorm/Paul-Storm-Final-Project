@@ -67,7 +67,7 @@ if (process.env.NODE_ENV === 'production') {
   const path = require('path');
 
   app.get('*', (req, res) => {
-    res.send(req);
+    res.send(req.url);
   });
 }
 
