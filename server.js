@@ -57,21 +57,6 @@ app.use(
   })
 );
 
-if (process.env.NODE_ENV === 'production') {
-  // Express will serve up production assets
-  // like our main.js file, or main.css file!
-  app.use(express.static('client/build'));
-
-  // Express will serve up the index.html file
-  // if it doesn't recognize the route
-  const path = require('path');
-
-  app.get('/frontend', (req, res, next) => {
-    console.log(req.url)
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-  });
-}
-
 passport.use('login', new LocalStrategy ((username, password, done) => {
   const authenticated = (username === "1" || username === "2" || username === "3" || username === "4" || username === "5" || username === "6") && password === "password";
 
@@ -426,6 +411,21 @@ app.get("/backend/clozes/newCloze", (req, res) => {
 app.get("/test", checkAuthentication, (req, res) => {
   res.send("Success")
 })
+
+if (process.env.NODE_ENV === 'production') {
+  // Express will serve up production assets
+  // like our main.js file, or main.css file!
+  app.use(express.static('client/build'));
+
+  // Express will serve up the index.html file
+  // if it doesn't recognize the route
+  const path = require('path');
+
+  app.get('*', (req, res, next) => {
+    console.log(req.url)
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 app.listen(port, () => {
     console.log("Server listening on port", port)

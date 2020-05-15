@@ -23,14 +23,14 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Switch>
-          <Route exact path="frontend/" component={SelectLevel} />
-          <Route exact path="frontend/test" component={Login} />
-          <Route exact path="frontend/posts" component={Posts} />
-          <Route exact path="frontend/posts/clozes" component={PostClozes} />
-          <Route exact path="frontend/user" component={UserPage} />
-          <Route exact path="frontend/user/clozes" component={UserClozes} />
-          <Route exact path="frontend/user/words" component={UserWords} />
-          <Route exact path="frontend/user/words/study" component={UserWordsStudy} />
+          <Route exact path="/" component={SelectLevel} />
+          <Route exact path="/test" component={Login} />
+          <Route exact path="/posts" component={Posts} />
+          <Route exact path="/posts/clozes" component={PostClozes} />
+          <Route exact path="/user" component={UserPage} />
+          <Route exact path="/user/clozes" component={UserClozes} />
+          <Route exact path="/user/words" component={UserWords} />
+          <Route exact path="/user/words/study" component={UserWordsStudy} />
         </Switch>
       </div>
     </BrowserRouter>
