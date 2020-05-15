@@ -16,13 +16,6 @@ import UserWordsStudy from "./components/userWordsStudy"
 
 import rootReducer from "./reducers/index.js";
 
-const proxy = require('http-proxy-middleware')
-
-module.exports = function(app) {
-    // add other server routes to path array
-    app.use(proxy(['/backend' ], { target: 'http://localhost:5000' }));
-}
-
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
 ReactDOM.render(
