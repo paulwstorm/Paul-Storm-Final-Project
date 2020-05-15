@@ -29,7 +29,6 @@ class Posts extends Component{
     async checkNewUser() {
         if (Object.keys(this.props.user).length > 0) {
             if ((!this.props.user.visited.includes("/posts")) && (this.state.showIntroModal == false)) {
-                console.log("Inside")
                 this.setState({showIntroModal: true})
                 await this.props.addRoomToUser("/posts")
             }
@@ -93,7 +92,7 @@ class Posts extends Component{
                         size={"s"} 
                         show={this.state.showIntroModal} 
                         onHide={() => {this.setState({showIntroModal:false})}}>
-                            <Modal.Body class="dictionary-body">
+                            <Modal.Body class="intro-body">
                                 <IntroPosts></IntroPosts>
                             </Modal.Body>
                         </Modal>
