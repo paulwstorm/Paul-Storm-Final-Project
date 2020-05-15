@@ -114,7 +114,7 @@ export function addClozeToUser(cloze) {
 }
 
 export function wordSearch(word, language) {
-    const searchResult = axios.get(`/wordsearch?query=${word}&lang=${language}`, {withCredentials: true})
+    const searchResult = axios.get(`/backend/wordsearch?query=${word}&lang=${language}`, {withCredentials: true})
 
     return {
         type: WORD_SEARCH,
