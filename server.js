@@ -99,7 +99,7 @@ passport.use('login', new LocalStrategy ((username, password, done) => {
 }));
 
 passport.serializeUser((user, done) => {
-  console.log(user);
+  console.log(req);
   done(null, user);
 });
 
