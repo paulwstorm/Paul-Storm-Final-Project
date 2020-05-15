@@ -147,15 +147,19 @@ app.post('/backend/login', passport.authenticate('login', {
 }));
 
 app.get("/backend/posts", checkAuthentication, (req, res) => {
-  console.log("in posts route", req.url)
+  console.log("150")
   let viewNum = parseInt(req.query.viewNum)
   let startPost = parseInt(req.query.startPost)
   Post.deleteMany({postChars: { $size: 0 }}).exec((err) => {
+    console.log("154")
     User.find({userName: req.user.myUser}).exec((err, user) => {
+      console.log("156")
       if (err) {
+        console.log("158")
         res.send(err)
       } else {
         Post.find({ postLevel: { $lte: user[0].userLevel }}).sort({dateRetrieved: -1}).skip(startPost).limit(viewNum).exec((err, posts) => {
+          console.log("162")
           if (err) {
             res.send(err)
           } else {
