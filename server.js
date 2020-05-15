@@ -142,8 +142,8 @@ app.post("/backend/userinfo", (req, res) => {
 })
 
 app.post('/backend/login', passport.authenticate('login', {
-  successRedirect: 'frontend/posts',
-  failureRedirect: 'frontend/'
+  successRedirect: '/posts',
+  failureRedirect: '/'
 }));
 
 app.get("/backend/posts", checkAuthentication, (req, res) => {
