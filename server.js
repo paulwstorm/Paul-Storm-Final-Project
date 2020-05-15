@@ -154,10 +154,8 @@ app.get("/backend/posts", checkAuthentication, (req, res) => {
   User.find({userName: req.user.myUser}).exec((err, user) => {
     console.log("156: ", user)
     if (err) {
-      console.log("158: ", err)
       res.send(err)
     } else {
-      console.log("161", posts)
       Post.find({ postLevel: { $lte: user[0].userLevel }}).sort({dateRetrieved: -1}).skip(startPost).limit(viewNum).exec((err, posts) => {
         console.log("163", posts)
         if (err) {
