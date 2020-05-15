@@ -66,7 +66,7 @@ if (process.env.NODE_ENV === 'production') {
   // if it doesn't recognize the route
   const path = require('path');
 
-  app.get('*', (req, res, next) => {
+  app.get('/frontend', (req, res, next) => {
     console.log(req.url)
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
     next();
@@ -116,7 +116,7 @@ function checkAuthentication(req,res,next){
       //req.isAuthenticated() will return true if user is logged in
       next();
   } else{
-      res.redirect("/");
+      res.redirect("frontend/");
   }
 }
 
@@ -158,8 +158,8 @@ app.post("/backend/userinfo", (req, res) => {
 })
 
 app.post('/backend/login', passport.authenticate('login', {
-  successRedirect: '/posts',
-  failureRedirect: '/'
+  successRedirect: 'frontend/posts',
+  failureRedirect: 'frontend/'
 }));
 
 app.get("/backend/posts", checkAuthentication, (req, res) => {
