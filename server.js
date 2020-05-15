@@ -109,7 +109,7 @@ app.get("/backend/wordsearch", (req,res) => {
   if (req.query.lang == "Chinese") {
     Dictionary
       .find({simplified: req.query.query})
-      .limit(5)
+      .limit(10)
       .exec((err, result) => {
         if (err) {
           res.send(err)
@@ -123,6 +123,7 @@ app.get("/backend/wordsearch", (req,res) => {
   
     Dictionary
       .find({english: { $regex: query}})
+      .limit(10)
       .exec((err, result) => {
         if (err) {
           res.send(err)
