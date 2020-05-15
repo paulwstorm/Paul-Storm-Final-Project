@@ -69,7 +69,6 @@ if (process.env.NODE_ENV === 'production') {
   app.get('/frontend', (req, res, next) => {
     console.log(req.url)
     res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-    next();
   });
 }
 
