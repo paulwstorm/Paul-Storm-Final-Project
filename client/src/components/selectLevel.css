@@ -3,8 +3,9 @@
 }
 
 .level-button {
+    text-align: center;
     margin-bottom: 6%;
-    max-width: 25%;
+    max-width: 30vh;
     background-color: #0084FF;
     border-style: none;
     border: solid 1px;
