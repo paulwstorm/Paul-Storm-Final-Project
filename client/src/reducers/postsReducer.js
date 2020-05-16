@@ -15,13 +15,11 @@ function shuffle(a) {
 export default function(state = [], action) {
     switch (action.type) {
         case GET_POSTS:
-            console.log("in postsReducer: ", action)
             state = []
             state = action.payload.data
             state = shuffle(state)
             return state
         default:
-            console.log("in postsReducer: ", action)
             return state
     }
 }
