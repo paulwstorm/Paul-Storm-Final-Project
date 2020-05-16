@@ -2,6 +2,11 @@
     margin-top: 10%;
 }
 
+.modal-content {
+    max-width: 80%;
+    margin: 6% auto 0;
+}
+
 .sample-post {
     width: 80%;
 }
