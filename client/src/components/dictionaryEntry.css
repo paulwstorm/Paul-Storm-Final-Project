@@ -52,6 +52,7 @@
 }
 
 .language-dropdown {
+    display: block;
     margin-left: 3%;
     width: 30vh;
 }
