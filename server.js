@@ -123,7 +123,7 @@ app.get("/backend/wordsearch", (req,res) => {
   
     Dictionary
       .find({english: { $regex: query}})
-      .limit(10)
+      // .limit(10)
       .exec((err, result) => {
         if (err) {
           res.send(err)
