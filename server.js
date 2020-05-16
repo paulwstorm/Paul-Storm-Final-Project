@@ -234,8 +234,8 @@ app.get("/backend/posts/clozes",  (req, res) => {
               console.log(post)
               post.postTokenizedContent.forEach(wordArray => {
                 let clozedTokenizedWord = []
-                console.log("236: ", wordArray)
-                console.log("234: ", removedWord)
+                console.log("237: ", wordArray)
+                console.log("238: ", removedWord)
                 if (wordArray[0] == removedWord[0]) {
                   clozedTokenizedWord.push("[------]")
                   clozedTokenizedWord.push(wordArray[1])
