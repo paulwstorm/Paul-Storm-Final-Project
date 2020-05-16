@@ -170,7 +170,6 @@ app.get("/backend/posts", checkAuthentication, (req, res) => {
   let viewNum = parseInt(req.query.viewNum)
   let startPost = parseInt(req.query.startPost)
   User.find({userName: req.user.myUser}).exec((err, user) => {
-    console.log("156: ", user)
     if (err) {
       res.send(err)
     } else {
