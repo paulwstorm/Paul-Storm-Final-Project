@@ -231,6 +231,7 @@ app.get("/backend/posts/clozes",  (req, res) => {
               let toRemove = Math.floor(Math.random() * post.postWordsPos.length)
               let removedWord = post.postWordsPos[toRemove]
               let clozedPostTokenizedContent = []
+              console.log(post)
               post.postTokenizedContent.forEach(wordArray => {
                 let clozedTokenizedWord = []
                 console.log("236: ", wordArray)
