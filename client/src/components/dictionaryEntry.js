@@ -77,6 +77,7 @@ class DictionaryEntry extends Component{
                                     value={this.props.searchTerm}
                                     onChange={(event) => {console.log(event.target.value);this.wordOnClick(event.target.value)}}
                                 />
+                                <br></br>
                                 <select className="category-dropdown" onChange={event => {this.setState({ searchLanguage: event.target.value })}}>
                                     <option value="Chinese">Chinese</option>
                                     <option value="English">English</option>
