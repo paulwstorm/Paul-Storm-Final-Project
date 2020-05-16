@@ -226,6 +226,8 @@ app.get("/backend/posts/clozes",  (req, res) => {
         Word.find({ level:{ $lte: user[0].userLevel }}).countDocuments().exec((err, wordCount) => {
           let wordStartIndex = Math.floor(Math.random() * (wordCount-(viewNum*3)))
           console.log("line 226")
+          console.log(user[0].userLevel)
+          console.log(posts)
           Word.find({ level:{ $lte: user[0].userLevel }}).limit((viewNum*3)).skip(wordStartIndex).exec((err, words) => {
             let clozedPosts = []
             let count = 0
