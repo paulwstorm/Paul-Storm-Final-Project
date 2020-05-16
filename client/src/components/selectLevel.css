@@ -25,3 +25,7 @@
 .usernamePassword {
     display: None;
 }
+
+.select-level-row {
+    margin-bottom: 20vh;
+}

@@ -22,7 +22,7 @@ class SelectLevel extends Component{
           </Col>
           <Col sm={3}></Col>
         </Row>
-        <Row>
+        <Row className="select-level-row">
           <Col sm={4}></Col>
           <Col sm={4}>
             <form action="/backend/login" method="post">
