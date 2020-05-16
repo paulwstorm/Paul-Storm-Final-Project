@@ -67,7 +67,7 @@ class PostCards extends Component{
                             <Card className="postCard">
                                 <div class="card-body">
                                     <Row className="card-top">
-                                        <Col s={8}>
+                                        <Col sm={8}>
                                             <div className="user">
                                                 <a href={`https://www.weibo.com/${post.postUserUrl}`} target='_blank'>
                                                         <Image className="userImage" roundedCircle fluid src={post.postUserImageUrl} />
@@ -75,8 +75,8 @@ class PostCards extends Component{
                                                 </a>
                                             </div>
                                         </Col>
-                                        <Col s={2} className="post-level-col"><div className="post-level">Level {post.postLevel}</div></Col>
-                                        <Col s={2} className="source-icon">
+                                        <Col sm={2} className="post-level-col"><div className="post-level">Level {post.postLevel}</div></Col>
+                                        <Col sm={2} className="source-icon">
                                             <span className="source">Source</span>
                                             <i class="fab fa-weibo fa-1x"></i>
                                         </Col>
