@@ -107,9 +107,9 @@ class PostCards extends Component{
                                                 Zhihu Question:
                                             </a>   
                                          </Col>
-                                        <Col sm={3}><div className="post-level">Level {post.postLevel}</div></Col>
+                                        <Col sm={3}><div className="post-level">Lvl {post.postLevel}</div></Col>
                                         <Col sm={3} className="source-icon">
-                                            <span className="source">Source</span>
+                                            {/* <span className="source">Source</span> */}
                                             <i class="fab fa-zhihu fa-1x"></i>
                                         </Col>
                                     </Row>
@@ -139,9 +139,9 @@ class PostCards extends Component{
                                                 News Article:
                                             </a>   
                                          </Col>
-                                        <Col sm={3}><div className="post-level">Level {post.postLevel}</div></Col>
+                                        <Col sm={3}><div className="post-level">Lvl {post.postLevel}</div></Col>
                                         <Col sm={3} className="source-icon">
-                                            <span className="source">Source</span>
+                                            {/* <span className="source">Source</span> */}
                                             <i class="fab fa-zhihu fa-1x"></i>
                                         </Col>
                                     </Row>
