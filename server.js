@@ -215,14 +215,17 @@ app.get("/backend/posts/clozes",  (req, res) => {
   let viewNum = parseInt(req.query.viewNum)
   let startPost = parseInt(req.query.startPost)
 
+  console.log("line 218")
   User.find({userName: req.user.myUser}).exec((err, user) => {
+    console.log("line 220")
     if (err) {
       res.send(err)
     } else {
+      console.log("line 224")
       Post.find({ postLevel: { $lte: user[0].userLevel }}).sort({"dateRetrieved":-1}).skip(startPost).limit(viewNum).exec((err, posts) => {
         Word.find({ level:{ $lte: user[0].userLevel }}).countDocuments().exec((err, wordCount) => {
           let wordStartIndex = Math.floor(Math.random() * (wordCount-(viewNum*3)))
-
+          console.log("line 226")
           Word.find({ level:{ $lte: user[0].userLevel }}).limit((viewNum*3)).skip(wordStartIndex).exec((err, words) => {
             let clozedPosts = []
             let count = 0
@@ -258,7 +261,7 @@ app.get("/backend/posts/clozes",  (req, res) => {
 
               count += 3
             })
-
+            console.log("line 264")
             res.send({posts, clozedPosts})
           })
         })
