@@ -15,10 +15,19 @@ class DictionaryEntry extends Component{
         }
 
         this.wordOnClick = this.wordOnClick.bind(this)
+        this.intitialSearch = this.initialSearch.bind(this)
     }
 
     componentDidMount() {
-        this.props.wordSearch(this.props.searchTerm, this.state.searchLanguage)
+        this.intitialSearch()
+    }
+
+    initialSearch() {
+        if (!this.props.searchTerm) {
+            setTimeout(() => {this.intitialSearch()}, 10000)
+        } else {
+            this.props.wordSearch(this.props.searchTerm, this.state.searchLanguage)
+        }
     }
 
     onEntryClick(word) {
