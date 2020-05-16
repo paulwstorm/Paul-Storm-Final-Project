@@ -6,7 +6,7 @@ export default function(state = [], action) {
             let wordList = action.payload.data
 
             wordList = wordList.sort((a, b) => {
-                    if (a.wordRank < b.wordRank) {
+                    if (a.wordRank > b.wordRank) {
                         return 1
                     } else {
                         return -1
