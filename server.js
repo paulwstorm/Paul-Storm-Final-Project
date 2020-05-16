@@ -169,8 +169,6 @@ app.post('/backend/login', passport.authenticate('login', {
 app.get("/backend/posts", checkAuthentication, (req, res) => {
   let viewNum = parseInt(req.query.viewNum)
   let startPost = parseInt(req.query.startPost)
-  console.log("154")
-  console.log(req.user.myUser)
   User.find({userName: req.user.myUser}).exec((err, user) => {
     console.log("156: ", user)
     if (err) {
