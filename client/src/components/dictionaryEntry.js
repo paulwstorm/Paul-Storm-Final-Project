@@ -74,6 +74,7 @@ class DictionaryEntry extends Component{
                         <span>
                             <form className="input-group search-bar">
                                 <input
+                                    className="search-bar-input"
                                     value={this.props.searchTerm}
                                     onChange={(event) => {console.log(event.target.value);this.wordOnClick(event.target.value)}}
                                 />
