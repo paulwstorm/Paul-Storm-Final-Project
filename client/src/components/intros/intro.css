@@ -2,6 +2,10 @@
     margin-top: 10%;
 }
 
+.modal-content {
+    margin: 10vh;
+}
+
 .sample-post {
     width: 80%;
 }
