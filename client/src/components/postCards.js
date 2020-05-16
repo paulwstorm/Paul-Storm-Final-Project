@@ -102,13 +102,13 @@ class PostCards extends Component{
                             <Card className="postCard">
                                 <div class="card-body">
                                     <Row className="card-top">
-                                        <Col sm={6}>
+                                        <Col xs={7}>
                                             <a className="postUrl" href={post.postUrl} target='_blank'> 
                                                 Zhihu Question:
                                             </a>   
                                          </Col>
-                                        <Col sm={3}><div className="post-level">Lvl {post.postLevel}</div></Col>
-                                        <Col sm={3} className="source-icon">
+                                        <Col xs={3}><div className="post-level">Lvl {post.postLevel}</div></Col>
+                                        <Col xs={2} className="source-icon">
                                             {/* <span className="source">Source</span> */}
                                             <i class="fab fa-zhihu fa-1x"></i>
                                         </Col>
@@ -134,13 +134,13 @@ class PostCards extends Component{
                             <Card className="postCard">
                                 <div class="card-body">
                                     <Row className="card-top">
-                                        <Col sm={6}>
+                                        <Col xs={3}>
                                             <a className="postUrl" href={post.postUrl} target='_blank'> 
                                                 News Article:
                                             </a>   
                                          </Col>
-                                        <Col sm={3}><div className="post-level">Lvl {post.postLevel}</div></Col>
-                                        <Col sm={3} className="source-icon">
+                                        <Col xs={3}><div className="post-level">Lvl {post.postLevel}</div></Col>
+                                        <Col xs={2} className="source-icon">
                                             {/* <span className="source">Source</span> */}
                                             <i class="fab fa-zhihu fa-1x"></i>
                                         </Col>
