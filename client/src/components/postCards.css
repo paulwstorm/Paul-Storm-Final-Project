@@ -148,3 +148,7 @@
     background-color: #FFFF;
     float: left;
 }
+
+.zhihuContent {
+    clear: both;
+}
