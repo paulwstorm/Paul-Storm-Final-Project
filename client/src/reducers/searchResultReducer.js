@@ -14,8 +14,7 @@ export default function(state = [], action) {
                 }
             })
             wordList = wordList.slice(0,10)
-            console.log(wordList)
-            state = action.payload.data
+            state = wordList
             return state
         default:
             return state
