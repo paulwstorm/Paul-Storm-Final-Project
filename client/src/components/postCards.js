@@ -113,7 +113,9 @@ class PostCards extends Component{
                                             <i class="fab fa-zhihu fa-1x"></i>
                                         </Col>
                                     </Row>
-                                    { this.renderContentImage(post)}
+                                    <div>
+                                        { this.renderContentImage(post)}
+                                    </div>
                                     <Row className="cardBotom">                                    
                                         <Col xs={6}><div className="postDate">{post.dateRetrieved.slice(0,10)}</div></Col>
                                         <Col xs={6}><span class="material-icons addCloze" onClick={() => {this.addClozeButton(post)}}>add_circle_outline</span></Col>
