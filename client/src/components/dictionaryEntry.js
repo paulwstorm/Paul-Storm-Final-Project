@@ -49,13 +49,13 @@ class DictionaryEntry extends Component{
                         <span>
                             <form className="input-group search-bar">
                                 <input
-                                    className="search-term"
+                                    className="search-bar-input"
                                     value={this.props.searchTerm}
                                     onChange={(event) => {this.wordOnClick(event.target.value)}}
                                 />
                                 <br></br>
                                 <div>
-                                    <select className="language-dropdown" onChange={event => {this.setState({ searchLanguage: event.target.value })}}>
+                                    <select className="category-dropdown" onChange={event => {this.setState({ searchLanguage: event.target.value })}}>
                                         <option value="Chinese">Chinese</option>
                                         <option value="English">English</option>
                                     </select>
