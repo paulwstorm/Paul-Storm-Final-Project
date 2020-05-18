@@ -53,9 +53,9 @@
 
 .language-dropdown, .category-dropdown {
     display: block;
-    width: 30vh;
+    width: 20vh;
 }
 
 .search-bar-input {
-    width: 30vh;
+    width: 25vh;
 }
