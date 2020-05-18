@@ -119,10 +119,10 @@ app.get("/backend/wordsearch", (req,res) => {
     })
   } else if (req.query.lang == "English") {
     const query = (req.query.query).toLowerCase()
-    // const regExQuery = new RegExp(`\b(\w*${query}\w*)\b`, "i")
+    const regExQuery = new RegExp(`.*${query}.*`, "i")
   
     Dictionary
-      .find({english: { $regex: `.*${query}.*`}})
+      .find({english: { $regex: regExQuery}})
       // .limit(10)
       .exec((err, result) => {
         if (err) {

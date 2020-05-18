@@ -53,6 +53,9 @@
 
 .language-dropdown, .category-dropdown {
     display: block;
-    margin-left: 3%;
+    width: 30vh;
+}
+
+.search-bar-input {
     width: 30vh;
 }
