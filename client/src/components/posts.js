@@ -22,15 +22,17 @@ class Posts extends Component{
     }
 
     async componentDidMount() {
-        this.intialPosts()
+        this.initialPosts()
         await this.props.getUser()
     }
 
     initialPosts() {
-        if (this.posts.lenght === 0) {
+        if (this.posts.length === 0) {
+            console.log("no posts yet")
+            this.props.getPosts(this.props.viewNum, this.props.startPost)
             setTimeout(() => {this.initialPosts()}, 10000)
         } else {
-            this.props.getPosts(this.props.viewNum, this.props.startPost)
+            console.log("posts")
         }
     }
 
