@@ -19,6 +19,8 @@ class Posts extends Component{
             startPost: 0,
             showIntroModal: false
         }
+
+        this.initialPosts = this.initialPosts.bind(this)
     }
 
     async componentDidMount() {
@@ -27,7 +29,7 @@ class Posts extends Component{
     }
 
     initialPosts() {
-        if (this.state.posts.length === 0) {
+        if (this.props.posts.length === 0) {
             console.log("no posts yet")
             this.props.getPosts(this.props.viewNum, this.props.startPost)
             setTimeout(() => {this.initialPosts()}, 10000)
