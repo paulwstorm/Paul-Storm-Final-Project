@@ -10,7 +10,7 @@ class IntroPosts extends Component {
         return (
             <div className="intro">
                 <h3 className="intro-header">Welcome to Posts!</h3>
-                <p className="intro-paragraph">On this page you can see read of the recent posts tailored to your reading level!</p>
+                <p className="intro-paragraph">On this page you can see recent posts tailored to your reading level!</p>
                 <p className="intro-paragraph">Use these buttons to toggle between reading posts and playing a fill-in-the-blank:</p>
                 <br/>
                 <Image className="sample-post" src="https://raw.githubusercontent.com/paulwstorm/Paul-Storm-Final-Project/images/server/images/Screen%20Shot%202020-04-06%20at%207.45.45%20PM.png"></Image>
