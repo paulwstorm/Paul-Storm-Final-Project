@@ -27,7 +27,7 @@ class Posts extends Component{
     }
 
     initialPosts() {
-        if (this.posts.length === 0) {
+        if (this.state.posts.length === 0) {
             console.log("no posts yet")
             this.props.getPosts(this.props.viewNum, this.props.startPost)
             setTimeout(() => {this.initialPosts()}, 10000)
