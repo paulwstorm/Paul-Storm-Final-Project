@@ -122,7 +122,7 @@ app.get("/backend/wordsearch", (req,res) => {
     const regExQuery = new RegExp(`\b(\w*${query}\w*)\b`, "i")
   
     Dictionary
-      .find({english: { $regex: `\b(\w*${query}\w*)\b`}})
+      .find({english: { $regex: `.*${query}.*`}})
       // .limit(10)
       .exec((err, result) => {
         if (err) {
