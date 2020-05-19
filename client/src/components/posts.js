@@ -32,7 +32,7 @@ class Posts extends Component{
         if (this.props.posts.length === 0) {
             console.log("no posts yet")
             this.props.getPosts(this.props.viewNum, this.props.startPost)
-            setTimeout(() => {this.initialPosts()}, 10000)
+            setTimeout(() => {this.initialPosts()}, 1000)
         } else {
             console.log("posts")
         }

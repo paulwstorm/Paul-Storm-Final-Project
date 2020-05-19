@@ -25,7 +25,7 @@ class DictionaryEntry extends Component{
     initialSearch() {
         if (!this.props.searchTerm) {
             console.log("No search term")
-            setTimeout(() => {this.intitialSearch()}, 10000)
+            setTimeout(() => {this.intitialSearch()}, 1000)
         } else {
             this.props.wordSearch(this.props.searchTerm, this.state.searchLanguage)
         }
